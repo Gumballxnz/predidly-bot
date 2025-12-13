@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficial do Aviador Bot - Mude de Vida Rápido</title>
+    <meta name="description"
+        content="Domina o Aviador para faturar 100mil todos os meses com este bot. Transforma 100 meticais em lucros de até 15.000 MZN.">
+    <meta name="author" content="Predidly Bot">
+
+    <meta property="og:title" content="Oficial do Aviador Bot - Mude de Vida Rápido">
+    <meta property="og:description" content="Domina o Aviador para faturar 100mil todos os meses com este bot">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1457709218818526');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1457709218818526&ev=PageView&noscript=1" /></noscript>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== ANTI-CLONE PROTECTION ===== */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0a0a0f;
+            color: #ffffff;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            /* Disable text selection */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Disable image dragging */
+        img,
+        video {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        .video-container video {
+            pointer-events: auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.8), 0 0 60px rgba(220, 38, 38, 0.4);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Header Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Badge with Animation */
+        .badge-oficial {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge-oficial::before {
+            content: '✦';
+            animation: sparkle 1s ease-in-out infinite;
+        }
+
+        .badge-oficial::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* Hero Title */
+        .hero h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero h1 .red {
+            color: #ef4444;
+        }
+
+        .hero h1 .gold {
+            color: #fbbf24;
+            animation: pulse 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .hero h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero p .green {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .hero p .gold {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* Vagas Banner */
+        .vagas-banner {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            animation: fadeInUp 0.8s ease-out 0.5s both, shake 5s ease-in-out infinite;
+        }
+
+        .vagas-banner p {
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .vagas-banner .icon {
+            color: #fbbf24;
+            animation: bounce 1s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .vagas-banner .number {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        /* Live Counter */
+        .live-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .live-counter .number {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .live-text {
+            color: #60a5fa;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.7s both;
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            animation: scaleIn 0.8s ease-out 0.8s both;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1a1a2e;
+            border: 1px solid #2d2d44;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .video-wrapper:hover {
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            cursor: pointer;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: auto;
+        }
+
+        /* Play Overlay - VTurb Style */
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .play-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: rgba(239, 68, 68, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            position: relative;
+        }
+
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.5);
+            animation: pulseRing 1.5s ease-out infinite;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(239, 68, 68, 0.7);
+        }
+
+        .play-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+            margin-left: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .play-text {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            padding: 2rem 1rem;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 50px rgba(34, 197, 94, 0.6);
+            animation: none;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 3rem 1rem;
+        }
+
+        .testimonials-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .testimonials-title h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonials-title p {
+            color: #60a5fa;
+            font-size: 1rem;
+        }
+
+        .testimonials-title .emoji {
+            margin-left: 0.25rem;
+            animation: bounce 1s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            background: #1a1a2e;
+            border: 1px solid #2d2d44;
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .testimonial-card:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .testimonial-card:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .testimonial-card:nth-child(7) {
+            animation-delay: 0.4s;
+        }
+
+        .testimonial-card:nth-child(8) {
+            animation-delay: 0.45s;
+        }
+
+        .testimonial-card:nth-child(9) {
+            animation-delay: 0.5s;
+        }
+
+        .testimonial-card:nth-child(10) {
+            animation-delay: 0.55s;
+        }
+
+        .testimonial-card:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4f46e5;
+            pointer-events: none;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .testimonial-info span {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid #2d2d44;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .footer .brand {
+            color: #60a5fa;
+        }
+
+        /* Notification Popup */
+        .notification-popup {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            max-width: 300px;
+            z-index: 100;
+            transform: translateX(-120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .notification-popup.show {
+            transform: translateX(0);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .notification-popup p {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .notification-popup .name {
+            color: #fbbf24;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1rem;
+            }
+
+            .cta-btn {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .play-btn {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* ===== ANTI-CLONE PROTECTION OVERLAY ===== */
+        .protection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .protection-overlay.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;">
+    <!-- Protection Overlay -->
+    <div class="protection-overlay" id="protection-overlay">
+        ⚠️ Ação não permitida!<br>
+        <span style="font-size: 1rem; color: #9ca3af; margin-top: 1rem; display: block;">
+            Este conteúdo é protegido por direitos autorais.
+        </span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge-oficial">Oficial do Aviador Bot</span>
+
+            <h1>
+                <span class="red">Mude de vida Rápido:</span><br>
+                Domina o Aviador para faturar <span class="gold">100mil</span>
+            </h1>
+            <h2>todos os meses com este bot</h2>
+
+            <p>Transforma <span class="green">100 meticais</span> em lucros de até <span class="gold">15.000 MZN</span>
+                .</p>
+        </div>
+    </section>
+
+    <!-- Vagas Banner -->
+    <div class="container">
+        <div class="vagas-banner">
+            <p><span class="icon">⚠️</span> Vagas disponíveis: <span class="number" id="vagas-count">13</span> restantes
+            </p>
+        </div>
+    </div>
+
+    <!-- Live Counter -->
+    <div class="container" style="text-align: center;">
+        <div class="live-counter">
+            <span class="live-dot"></span>
+            <span>💬</span>
+            <span class="number" id="viewers-count">146</span>
+            <span>pessoas estão a assistir agora…</span>
+        </div>
+        <p class="live-text">Vê o Bot operando ao vivo.</p>
+    </div>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-wrapper">
+            <div class="video-container" id="video-container">
+                <video id="vsl-video" preload="metadata" playsinline
+                    controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture>
+                    <source
+                        src="https://res.cloudinary.com/dm3glrwax/video/upload/v1765662694/clone-sites/aviator-flyer-vsl-final.mp4"
+                        type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+
+                <div class="play-overlay" id="play-overlay">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <span class="play-text">Clique para assistir</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button -->
+    <section class="cta-section">
+        <a href="#" class="cta-btn" id="cta-btn">
+            🚀 Ativar Agora
+        </a>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-title">
+            <h2>Moçambicanos que já usaram</h2>
+            <p>o Bot Aviador <span class="emoji">👇</span></p>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Carlos M. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos M."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Carlos M.</h3>
+                        <span>( Maputo )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Depositei 100 meticais e em 3 dias fiz 230.000 MZN. Comprei o meu primeiro
+                    carro! "</p>
+            </div>
+
+            <!-- Helena T. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Helena T."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Helena T.</h3>
+                        <span>( Beira )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Não acreditei até ver o lucro subir em tempo real. Hoje já consegui pagar
+                    a entrada da minha casa. "</p>
+            </div>
+
+            <!-- Mário A. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Mário A." class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Mário A.</h3>
+                        <span>( Tete )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" O bot é simplesmente surreal. Fiz 420.000 meticais em menos de 1 mês.
+                    Obrigado Ilídio! "</p>
+            </div>
+
+            <!-- Anabela L. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anabela L."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Anabela L.</h3>
+                        <span>( Nampula )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Comecei com 200 MZN e já passei dos 300.000. Nunca pensei que seria
+                    possível. "</p>
+            </div>
+
+            <!-- Samuel C. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Samuel C."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Samuel C.</h3>
+                        <span>( Quelimane )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Lucros constantes. Já tirei mais de 250.000 MZN e comprei a minha mota
+                    nova. "</p>
+            </div>
+
+            <!-- Eusébio P. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Eusébio P."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Eusébio P.</h3>
+                        <span>( Matola )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" O bot não erra. Fiz 320 mil e vou a juntar pra comprar terreno. "</p>
+            </div>
+
+            <!-- Marta J. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Marta J."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Marta J.</h3>
+                        <span>( Chimoio )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Comecei pra testar e em 2 semanas já bati 270.000 MZN. Já recomendo pra
+                    toda família. "</p>
+            </div>
+
+            <!-- Fernando D. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/57.jpg" alt="Fernando D."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Fernando D.</h3>
+                        <span>( Maputo )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Nunca vi nada igual. Fiz 400 mil e levantei em minutos. Vale cada centavo.
+                    "</p>
+            </div>
+
+            <!-- Lúcia V. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Lúcia V."
+                        class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Lúcia V.</h3>
+                        <span>( Beira )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" O bot faz o que promete. De 100 pra 29000, e depois fui escalando até
+                    280.000 MZN. "</p>
+            </div>
+
+            <!-- Jorge N. -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Jorge N." class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h3>Jorge N.</h3>
+                        <span>( Nacala )</span>
+                    </div>
+                </div>
+                <p class="testimonial-text">" Consegui comprar o meu carro usado com os lucros do Aviator Bot. Gratidão
+                    total. "</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 <span class="brand">predidly bot</span></p>
+        <p style="margin-top: 0.5rem;">Este site não é afiliado ao Aviator oficial. Os resultados individuais podem
+            variar.</p>
+    </footer>
+
+    <!-- Notification Popup -->
+    <div class="notification-popup" id="notification-popup">
+        <p><span class="name">Samuel</span> acaba de fazer a ativação agora mesmo!</p>
+    </div>
+
+    <script>
+        // ===== ANTI-CLONE PROTECTION =====
+        const protectionOverlay = document.getElementById('protection-overlay');
+
+        // Block right-click
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showProtectionAlert();
+        });
+
+        // Block keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Ctrl+P, PrintScreen
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+                (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p')) ||
+                e.key === 'PrintScreen'
+            ) {
+                e.preventDefault();
+                showProtectionAlert();
+                return false;
+            }
+        });
+
+        // Block copy/paste
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+            showProtectionAlert();
+        });
+
+        document.addEventListener('cut', (e) => {
+            e.preventDefault();
+            showProtectionAlert();
+        });
+
+        // Block drag
+        document.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        });
+
+        // Show protection alert
+        function showProtectionAlert() {
+            protectionOverlay.classList.add('active');
+            setTimeout(() => {
+                protectionOverlay.classList.remove('active');
+            }, 2000);
+        }
+
+        // Disable DevTools detection
+        (function () {
+            const devtools = { open: false };
+            const threshold = 160;
+
+            setInterval(() => {
+                if (window.outerWidth - window.innerWidth > threshold ||
+                    window.outerHeight - window.innerHeight > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        showProtectionAlert();
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 1000);
+        })();
+
+        // ===== VIDEO PLAYER LOGIC =====
+        const video = document.getElementById('vsl-video');
+        const overlay = document.getElementById('play-overlay');
+        const videoContainer = document.getElementById('video-container');
+
+        // Video starts paused - user must click to play
+        video.pause();
+
+        overlay.addEventListener('click', function () {
+            video.play();
+            video.muted = false;
+            overlay.classList.add('hidden');
+        });
+
+        video.addEventListener('ended', function () {
+            overlay.classList.remove('hidden');
+        });
+
+        video.addEventListener('pause', function () {
+            if (video.currentTime < video.duration - 0.5) {
+                overlay.classList.remove('hidden');
+            }
+        });
+
+        // ===== CTA BUTTON =====
+        const ctaBtn = document.getElementById('cta-btn');
+        ctaBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Track FB Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout');
+            }
+
+            this.innerHTML = '⏳ Redirecionando...';
+            this.style.pointerEvents = 'none';
+            this.style.animation = 'none';
+
+            setTimeout(() => {
+                // Replace with your checkout link
+                window.location.href = 'https://pay.example.com/checkout';
+            }, 1500);
+        });
+
+        // ===== LIVE VIEWERS COUNTER =====
+        const viewersCount = document.getElementById('viewers-count');
+        let viewers = 146;
+
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 10) - 4;
+            viewers = Math.max(90, Math.min(200, viewers + change));
+            viewersCount.textContent = viewers;
+        }, 3000);
+
+        // ===== VAGAS COUNTER =====
+        const vagasCount = document.getElementById('vagas-count');
+        let vagas = 13;
+
+        setInterval(() => {
+            if (Math.random() > 0.7 && vagas > 3) {
+                vagas--;
+                vagasCount.textContent = vagas;
+            }
+        }, 30000);
+
+        // ===== NOTIFICATION POPUP =====
+        const names = ['Samuel', 'Maria', 'João', 'Ana', 'Pedro', 'Carla', 'Luís', 'Sofia', 'Miguel', 'Teresa', 'Carlos', 'Helena', 'Mário', 'Anabela'];
+        const popup = document.getElementById('notification-popup');
+
+        function showNotification() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            popup.querySelector('.name').textContent = name;
+            popup.classList.add('show');
+
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 4000);
+        }
+
+        // Show first notification after 8 seconds
+        setTimeout(showNotification, 8000);
+
+        // Then show periodically
+        setInterval(showNotification, 20000);
+
+        // ===== CONSOLE PROTECTION =====
+        console.log('%c⚠️ PARE!', 'color: red; font-size: 50px; font-weight: bold;');
+        console.log('%cEste é um recurso do navegador destinado a desenvolvedores. Se alguém disse para você copiar e colar algo aqui, isso é uma fraude.', 'color: #333; font-size: 16px;');
+    </script>
+</body>
+
+</html>
