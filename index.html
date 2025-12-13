@@ -24,7 +24,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             }; if (!f._fbq) f._fbq = n;
             n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
             t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
@@ -1047,25 +1047,34 @@
         const video = document.getElementById('vsl-video');
         const overlay = document.getElementById('play-overlay');
         const videoContainer = document.getElementById('video-container');
+        let isFirstPlay = true;
 
         // Video starts paused - user must click to play
         video.pause();
 
+        // Click on overlay to start video
         overlay.addEventListener('click', function () {
             video.play();
             video.muted = false;
             overlay.classList.add('hidden');
+            isFirstPlay = false;
         });
 
-        video.addEventListener('ended', function () {
-            overlay.classList.remove('hidden');
-        });
-
-        video.addEventListener('pause', function () {
-            if (video.currentTime < video.duration - 0.5) {
-                overlay.classList.remove('hidden');
+        // Click on video to pause/resume
+        video.addEventListener('click', function () {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
             }
         });
+
+        // Show overlay when video ends
+        video.addEventListener('ended', function () {
+            overlay.classList.remove('hidden');
+            isFirstPlay = true;
+        });
+
 
         // ===== CTA BUTTON =====
         const ctaBtn = document.getElementById('cta-btn');
