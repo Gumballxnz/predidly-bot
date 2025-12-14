@@ -221,21 +221,21 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
+            background: rgba(30, 30, 40, 0.9);
+            border: 1px solid #dc2626;
+            color: #dc2626;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            animation: glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
+            animation: glow 2s ease-in-out infinite;
             position: relative;
             overflow: hidden;
         }
 
-        .badge-oficial::before {
-            content: '✦';
-            animation: sparkle 1s ease-in-out infinite;
+        .badge-oficial .plane-icon {
+            font-size: 1rem;
         }
 
         .badge-oficial::after {
@@ -245,7 +245,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.2), transparent);
             animation: shimmer 3s ease-in-out infinite;
         }
 
@@ -763,45 +763,14 @@
                 height: 24px;
             }
         }
-
-        /* ===== ANTI-CLONE PROTECTION OVERLAY ===== */
-        .protection-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            color: #ef4444;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .protection-overlay.active {
-            display: flex;
-        }
     </style>
 </head>
 
 <body oncontextmenu="return false;" oncopy="return false;" oncut="return false;">
-    <!-- Protection Overlay -->
-    <div class="protection-overlay" id="protection-overlay">
-        ⚠️ Ação não permitida!<br>
-        <span style="font-size: 1rem; color: #9ca3af; margin-top: 1rem; display: block;">
-            Este conteúdo é protegido por direitos autorais.
-        </span>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <span class="badge-oficial">Oficial do Aviador Bot</span>
+            <span class="badge-oficial"><span class="plane-icon">✈</span> Bot Aviator Oficial</span>
 
             <h1>
                 <span class="red">Mude de vida Rápido:</span><br>
@@ -1016,13 +985,11 @@
     </div>
 
     <script>
-        // ===== ANTI-CLONE PROTECTION =====
-        const protectionOverlay = document.getElementById('protection-overlay');
+        // ===== ANTI-CLONE PROTECTION (Silent) =====
 
         // Block right-click
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            showProtectionAlert();
         });
 
         // Block keyboard shortcuts
@@ -1035,7 +1002,6 @@
                 e.key === 'PrintScreen'
             ) {
                 e.preventDefault();
-                showProtectionAlert();
                 return false;
             }
         });
@@ -1043,44 +1009,16 @@
         // Block copy/paste
         document.addEventListener('copy', (e) => {
             e.preventDefault();
-            showProtectionAlert();
         });
 
         document.addEventListener('cut', (e) => {
             e.preventDefault();
-            showProtectionAlert();
         });
 
         // Block drag
         document.addEventListener('dragstart', (e) => {
             e.preventDefault();
         });
-
-        // Show protection alert
-        function showProtectionAlert() {
-            protectionOverlay.classList.add('active');
-            setTimeout(() => {
-                protectionOverlay.classList.remove('active');
-            }, 2000);
-        }
-
-        // Disable DevTools detection
-        (function () {
-            const devtools = { open: false };
-            const threshold = 160;
-
-            setInterval(() => {
-                if (window.outerWidth - window.innerWidth > threshold ||
-                    window.outerHeight - window.innerHeight > threshold) {
-                    if (!devtools.open) {
-                        devtools.open = true;
-                        showProtectionAlert();
-                    }
-                } else {
-                    devtools.open = false;
-                }
-            }, 1000);
-        })();
 
         // ===== VIDEO PLAYER LOGIC =====
         const video = document.getElementById('vsl-video');
