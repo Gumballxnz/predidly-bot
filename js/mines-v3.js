@@ -7,10 +7,13 @@
 const LINK_100 = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
 const LINK_269 = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
 
-// CSS de Performance (Mantém blur em áreas bloqueadas)
+// CSS de Performance (Remove blur para velocidade)
 const style = document.createElement('style');
 style.textContent = `
-    /* Apenas desativa animações pesadas, MAS MANTÉM o blur */
+    * { 
+        backdrop-filter: none !important; 
+        -webkit-backdrop-filter: none !important;
+    }
     .animate-pulse, .animate-spin { animation: none !important; }
 `;
 document.head.appendChild(style);
