@@ -1,324 +1,219 @@
+// Predidly Bot - Mines Injector & Performance Optimizer
+// Versão Otimizada: Remove delays e observers pesados para rodar liso em celulares fracos.
 
-// Predidly Bot - Mines Injector
-// Este script monitora a página e injeta o painel de Mines quando detecta a seção apropriada
+// LINKS DE CHECKOUT ATUALIZADOS - CONFIRMADOS PELO USUÁRIO (INVERTIDOS)
+// Basic = 100 MT = FEDMP47IV (Botão Recarregar/Ativar)
+// Pro = 269 MT = L45CA98W7 (Especial)
+const CHECKOUT_BASIC = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
+const CHECKOUT_PRO = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
 
+// HTML do Painel Mines (Otimizado - menos classes pesadas)
 const MINES_HTML = `
-<div id="mines-control-panel" class="mines-panel w-full h-full flex flex-col gap-4 p-4 bg-background/50 rounded-lg border border-border">
-    <!-- Header -->
-    <div class="flex items-center justify-between mb-2">
-        <h3 class="text-xl font-bold text-foreground">Configurar Estratégia</h3>
-        <span class="px-2 py-1 rounded bg-green-500/20 text-green-500 text-xs font-bold animate-pulse">
-            SISTEMA ATIVO
-        </span>
+<div id="mines-control-panel" class="w-full flex flex-col gap-3 p-4 bg-[#0f172a] rounded-lg border border-gray-800">
+    <!-- Header Simples -->
+    <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-white">Configurar Estratégia</h3>
+        <span class="px-2 py-0.5 rounded bg-green-900/50 text-green-400 text-[10px] font-bold border border-green-800">NO AR</span>
     </div>
 
-    <!-- Controls -->
-    <div class="grid grid-cols-2 gap-4">
-        <!-- Mines Selector -->
-        <div class="control-group">
-            <label class="block text-sm text-muted-foreground mb-1">Nº de Minas</label>
-            <div class="flex items-center gap-2 bg-secondary/50 p-1 rounded-md border border-input">
-                <button id="dec-mines" class="w-8 h-8 flex items-center justify-center rounded bg-background hover:bg-accent text-foreground font-bold">-</button>
-                <span id="mines-count" class="flex-1 text-center font-bold text-lg text-foreground">3</span>
-                <button id="inc-mines" class="w-8 h-8 flex items-center justify-center rounded bg-background hover:bg-accent text-foreground font-bold">+</button>
+    <!-- Controles -->
+    <div class="grid grid-cols-2 gap-3">
+        <!-- Minas -->
+        <div>
+            <label class="block text-xs text-gray-400 mb-1">Minas</label>
+            <div class="flex items-center bg-gray-800 rounded border border-gray-700">
+                <button id="dec-mines" class="w-8 h-8 flex items-center justify-center text-white hover:bg-gray-700 font-bold">-</button>
+                <span id="mines-count" class="flex-1 text-center font-bold text-white">3</span>
+                <button id="inc-mines" class="w-8 h-8 flex items-center justify-center text-white hover:bg-gray-700 font-bold">+</button>
             </div>
         </div>
-
-        <!-- Attempts Selector -->
-        <div class="control-group">
-            <label class="block text-sm text-muted-foreground mb-1">Nº de Tentativas</label>
-            <div class="flex items-center gap-2 bg-secondary/50 p-1 rounded-md border border-input">
-                <button id="dec-attempts" class="w-8 h-8 flex items-center justify-center rounded bg-background hover:bg-accent text-foreground font-bold">-</button>
-                <span id="attempts-count" class="flex-1 text-center font-bold text-lg text-foreground">3</span>
-                <button id="inc-attempts" class="w-8 h-8 flex items-center justify-center rounded bg-background hover:bg-accent text-foreground font-bold">+</button>
+        <!-- Tentativas -->
+        <div>
+            <label class="block text-xs text-gray-400 mb-1">Tentativas</label>
+            <div class="flex items-center bg-gray-800 rounded border border-gray-700">
+                <button id="dec-attempts" class="w-8 h-8 flex items-center justify-center text-white hover:bg-gray-700 font-bold">-</button>
+                <span id="attempts-count" class="flex-1 text-center font-bold text-white">3</span>
+                <button id="inc-attempts" class="w-8 h-8 flex items-center justify-center text-white hover:bg-gray-700 font-bold">+</button>
             </div>
         </div>
     </div>
 
-    <!-- Strategy Selection -->
-    <div class="strategy-group my-2">
-      <label class="block text-sm text-muted-foreground mb-1">Modo de Operação</label>
-      <div class="grid grid-cols-3 gap-2">
-        <button class="strat-btn active px-3 py-2 rounded-md text-xs font-bold bg-primary text-primary-foreground border border-primary transition-all">Conservador</button>
-        <button class="strat-btn px-3 py-2 rounded-md text-xs font-bold bg-secondary text-secondary-foreground border border-transparent hover:border-primary/50 transition-all">Moderado</button>
-        <button class="strat-btn px-3 py-2 rounded-md text-xs font-bold bg-secondary text-secondary-foreground border border-transparent hover:border-primary/50 transition-all">Agressivo</button>
-      </div>
+    <!-- Modos -->
+    <div class="grid grid-cols-3 gap-2 my-1">
+        <button class="strat-btn active bg-indigo-600 text-white rounded text-xs py-2 font-bold transition-colors">Conservador</button>
+        <button class="strat-btn bg-gray-800 text-gray-400 hover:text-white rounded text-xs py-2 font-bold transition-colors">Moderado</button>
+        <button class="strat-btn bg-gray-800 text-gray-400 hover:text-white rounded text-xs py-2 font-bold transition-colors">Agressivo</button>
     </div>
 
-    <!-- Action Button -->
-    <button id="generate-signals" class="w-full py-4 mt-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-lg shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden">
-        <span class="relative z-10 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap group-hover:text-yellow-300 transition-colors"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            GERAR SINAL AGORA
-        </span>
-        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+    <!-- Botão Gerar -->
+    <button id="generate-signals" class="w-full py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-600 hover:to-indigo-600 text-white font-bold rounded shadow-md active:scale-95 transition-transform flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        GERAR SINAL
     </button>
 
-    <!-- Signal Display (Hidden by default) -->
-    <div id="signal-display" class="hidden mt-4 p-4 bg-black/40 rounded-lg border border-dashed border-purple-500/50">
-        <div class="grid grid-cols-5 gap-2 aspect-square max-w-[200px] mx-auto relative">
-            <!-- Grid generated by JS -->
-            <div class="absolute inset-0 flex items-center justify-center z-10" id="loading-overlay">
-                <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-10 w-10"></div>
-            </div>
-        </div>
-        <div class="text-center mt-3 text-sm font-mono text-purple-300" id="signal-hash">HASH: ---</div>
+    <!-- Display -->
+    <div id="signal-display" class="hidden mt-3 p-3 bg-black/50 rounded border border-gray-800">
+        <div class="grid grid-cols-5 gap-1.5 aspect-square max-w-[180px] mx-auto" id="mines-grid"></div>
+        <div class="text-center mt-2 text-[10px] font-mono text-gray-500" id="signal-hash">...</div>
     </div>
 </div>
 
 <style>
-  .strat-btn.active {
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
-  }
-  .mine-cell {
-    background-color: #2a2a35;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-  .mine-cell.star {
-    background-color: #fbbf24;
-    box-shadow: 0 0 10px #fbbf24;
-    transform: scale(0.9);
-  }
-  .loader {
-    border-top-color: #9333ea;
-    -webkit-animation: spinner 1.5s linear infinite;
-    animation: spinner 1.5s linear infinite;
-  }
-  @keyframes spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+  /* CSS Otimizado - Sem animações pesadas */
+  .mine-cell { background-color: #1e293b; border-radius: 2px; }
+  .mine-cell.star { background-color: #fbbf24; transform: scale(0.95); box-shadow: 0 0 5px #f59e0b; }
 </style>
 `;
 
-// CHECKOUT LINKS
-const CHECKOUT_BASIC = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
-const CHECKOUT_PRO = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
+// =========================================================================
+// INTERCEPTADOR DE CLIQUES GLOBAL (A Mágica da Velocidade)
+// =========================================================================
+// Isso captura o clique ANTES de qualquer script do site original processá-lo.
+// Garante redirecionamento INSTANTÂNEO e zero processamento desnecessário.
 
-let minesState = {
-    mines: 3,
-    attempts: 3,
-    strategy: 'Conservador'
-};
+window.addEventListener('click', function (e) {
+    // Procura se o clique foi num botão ou link (ou filho de um)
+    let target = e.target.closest('button, a');
 
-function fixCheckoutLinks() {
-    // 1. Find buttons INSIDE a modal/dialog (popups) for final checkout
-    // React dialogs usually have role="dialog" or class="fixed"
-    const modalButtons = Array.from(document.querySelectorAll('[role="dialog"] button, .fixed button[class*="primary"], [class*="modal"] button'));
+    if (!target) return;
 
-    modalButtons.forEach(btn => {
-        if (btn.hasAttribute('data-fixed-link')) return;
+    const text = (target.innerText || '').toLowerCase();
 
-        const text = (btn.innerText || '').toLowerCase();
+    // Lista de palavras-chave para checkout FINAL
+    const checkoutKeywords = ['pagar', 'assinar', 'comprar', 'prosseguir', 'checkout', 'finalizar'];
+    const isCheckoutBtn = checkoutKeywords.some(w => text.includes(w)) && !text.includes('fechar') && !text.includes('cancelar');
 
-        // Target specific action words usually found in the final checkout step
-        if (
-            (text.includes('pagar') || text.includes('assinar') || text.includes('comprar') || text.includes('prosseguir') || text.includes('checkout')) &&
-            !text.includes('fechar') && !text.includes('cancelar')
-        ) {
-            console.log("Corrigindo botão FINAL de checkout (Modal):", btn);
+    // Se for link direto (<a>) configurado errado
+    const isLink = target.tagName === 'A';
+    const isOldLink = target.href && (target.href.includes('infinityfree') || target.href.includes('produto='));
 
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
+    // Verifica se estamos num modal ou diálogo (popups)
+    const inDialog = target.closest('[role="dialog"], .fixed, .modal');
 
-            let targetLink = CHECKOUT_BASIC;
-            // Try to guess if PRO
-            if (text.includes('pro') || (document.querySelector('[role="dialog"]') && document.querySelector('[role="dialog"]').innerText.includes('PRO'))) {
-                targetLink = CHECKOUT_PRO;
+    // CONDIÇÃO PARA INTERCEPTAR O CLICK (Checkout Final)
+    if ((isCheckoutBtn && inDialog) || isOldLink) {
+        // Verifica se é o botão "Gerar Sinal" (não queremos interceptar esse)
+        if (target.id === 'generate-signals' || target.closest('#mines-control-panel')) return;
+
+        console.log("🚀 Interceptação de Checkout Rápido Acionada!");
+
+        // Bloqueia TUDO do site antigo (scripts, timers, delays)
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        // Decide para onde vai (Basic vs Pro)
+        let finalUrl = CHECKOUT_BASIC;
+        // Lógica simples: Se diz PRO, vai pro link PRO.
+        if (text.includes('pro') || (inDialog && inDialog.innerText.includes('PRO')) || document.body.innerText.includes('Predidly Bot PRO')) {
+            // Check extra pra garantir que não estamos mandando Basic pro PRO
+            if (!text.includes('100') && !text.includes('basic')) {
+                finalUrl = CHECKOUT_PRO;
             }
-
-            newBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = targetLink;
-            });
-
-            newBtn.setAttribute('data-fixed-link', 'true');
-            newBtn.style.cursor = 'pointer';
         }
+
+        // Redireciona NA HORA
+        console.log("Redirecionando para:", finalUrl);
+        window.location.href = finalUrl;
+        return false;
+    }
+
+}, true); // UseCapture = true é o segredo aqui
+
+// =========================================================================
+// INJETOR DO PAINEL MINES (Versão Leve)
+// =========================================================================
+
+let minesState = { mines: 3, strategy: 'Conservador' };
+
+function injectMines() {
+    // Se já existe, aborta (economiza CPU)
+    if (document.getElementById('mines-control-panel')) return;
+
+    // Busca heurística leve - procura apenas divs visíveis com texto curto
+    const possibleDivs = document.querySelectorAll('div');
+    for (let i = 0; i < possibleDivs.length; i++) {
+        const t = possibleDivs[i].innerText;
+        // Check rápido de string curta "Em breve"
+        if (t.length < 50 && (t.includes('Em breve') || t.includes('em breve'))) {
+            const container = possibleDivs[i].closest('.bg-card, .rounded-lg') || possibleDivs[i].parentElement;
+            if (container) {
+                container.innerHTML = MINES_HTML;
+                container.style.minHeight = "auto";
+                setupMinesEvents();
+                console.log("✅ Painel injetado (Modo Leve)");
+                return; // Para assim que achar
+            }
+        }
+    }
+}
+
+function setupMinesEvents() {
+    document.getElementById('inc-mines').onclick = () => { if (minesState.mines < 24) updateMinesDisplay(++minesState.mines) };
+    document.getElementById('dec-mines').onclick = () => { if (minesState.mines > 2) updateMinesDisplay(--minesState.mines) };
+    document.getElementById('inc-attempts').onclick = () => {
+        let v = parseInt(document.getElementById('attempts-count').innerText);
+        if (v < 10) document.getElementById('attempts-count').innerText = v + 1;
+    };
+    document.getElementById('dec-attempts').onclick = () => {
+        let v = parseInt(document.getElementById('attempts-count').innerText);
+        if (v > 1) document.getElementById('attempts-count').innerText = v - 1;
+    };
+
+    const btns = document.querySelectorAll('.strat-btn');
+    btns.forEach(b => b.onclick = (e) => {
+        btns.forEach(x => { x.classList.remove('active', 'bg-indigo-600', 'text-white'); x.classList.add('bg-gray-800', 'text-gray-400'); });
+        e.target.classList.remove('bg-gray-800', 'text-gray-400');
+        e.target.classList.add('active', 'bg-indigo-600', 'text-white');
     });
 
-    // 2. Catch actual <a> links pointing to old URLs anywhere
-    const links = Array.from(document.querySelectorAll('a[href*="infinityfree"], a[href*="checkout"], a[href*="produto"]'));
-    links.forEach(a => {
-        if (a.hasAttribute('data-fixed-link') || a.href.includes('ratixpay.site')) return;
-
-        // Determine link type
-        if (a.href.includes('pro') || a.innerText.toLowerCase().includes('pro')) {
-            a.href = CHECKOUT_PRO;
-        } else {
-            // Default to basic if unclassified
-            a.href = CHECKOUT_BASIC;
-        }
-        a.setAttribute('data-fixed-link', 'true');
-    });
+    document.getElementById('generate-signals').onclick = runPrediction;
 }
 
+function updateMinesDisplay(val) { document.getElementById('mines-count').innerText = val; }
 
-function initMinesPanel() {
-    console.log("Iniciando injeção do painel Mines...");
-
-    // Find the target element looking for text "em breve" or "Mines"
-    // This is a heuristic search
-    const allDivs = document.querySelectorAll('div');
-    let targetContainer = null;
-
-    for (const div of allDivs) {
-        if (div.innerText.toLowerCase().includes('em breve') && div.innerText.toLowerCase().includes('estratégia')) {
-            // Found a potential candidate. Let's look for the closest substantial container
-            targetContainer = div.closest('.bg-card, .rounded-lg') || div.parentElement;
-            console.log("Container alvo encontrado:", targetContainer);
-            break;
-        }
-    }
-
-    /* Fallback: if specific text not found, look for empty cards or specific layout positions used in dashboard */
-    if (!targetContainer) {
-        // Try to find the dashboard grid and inject into the second or third slot if emptyish
-        const grid = document.querySelector('.grid');
-        if (grid && grid.children.length > 1) {
-            // Heuristic: The Mines panel is usually one of the main cards
-            // We might replace a card that looks "empty"
-        }
-    }
-
-    if (targetContainer) {
-        // Clear container and inject our HTML
-        targetContainer.innerHTML = MINES_HTML;
-        targetContainer.style.minHeight = "400px"; // Ensure visibility
-
-        setupEventListeners();
-        console.log("Painel Mines injetado com sucesso!");
-    } else {
-        console.log("Falha ao encontrar o container alvo para injeção.");
-    }
-}
-
-function setupEventListeners() {
-    // Mines Counter
-    document.getElementById('dec-mines')?.addEventListener('click', () => updateState('mines', -1));
-    document.getElementById('inc-mines')?.addEventListener('click', () => updateState('mines', 1));
-
-    // Attempts Counter
-    document.getElementById('dec-attempts')?.addEventListener('click', () => updateState('attempts', -1));
-    document.getElementById('inc-attempts')?.addEventListener('click', () => updateState('attempts', 1));
-
-    // Strategy Buttons
-    document.querySelectorAll('.strat-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.strat-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-primary-foreground'));
-            document.querySelectorAll('.strat-btn').forEach(b => b.classList.add('bg-secondary', 'text-secondary-foreground'));
-
-            e.target.classList.remove('bg-secondary', 'text-secondary-foreground');
-            e.target.classList.add('active', 'bg-primary', 'text-primary-foreground');
-
-            minesState.strategy = e.target.innerText;
-        });
-    });
-
-    // Generate Button
-    document.getElementById('generate-signals')?.addEventListener('click', generateSignal);
-}
-
-function updateState(key, change) {
-    if (key === 'mines') {
-        let newVal = minesState.mines + change;
-        if (newVal >= 2 && newVal <= 24) minesState.mines = newVal;
-        document.getElementById('mines-count').innerText = minesState.mines;
-    }
-    if (key === 'attempts') {
-        let newVal = minesState.attempts + change;
-        if (newVal >= 1 && newVal <= 5) minesState.attempts = newVal;
-        document.getElementById('attempts-count').innerText = minesState.attempts;
-    }
-}
-
-function generateSignal() {
+function runPrediction() {
+    const grid = document.getElementById('mines-grid');
     const display = document.getElementById('signal-display');
     const btn = document.getElementById('generate-signals');
-    const loading = document.getElementById('loading-overlay');
-
-    if (!display || !btn) return;
 
     display.classList.remove('hidden');
-    display.innerHTML = `
-        <div class="grid grid-cols-5 gap-2 aspect-square max-w-[200px] mx-auto relative p-2" id="mines-grid">
-             <!-- Cells -->
-        </div>
-        <div class="text-center mt-3 text-xs font-mono text-muted-foreground" id="signal-hash">Gerando probabilidade...</div>
-    `;
+    grid.innerHTML = '';
 
-    const grid = document.getElementById('mines-grid');
-    // Draw empty grid
+    // Cria grid de forma eficiente
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < 25; i++) {
-        const cell = document.createElement('div');
-        cell.className = "mine-cell w-full h-full bg-secondary rounded-sm border border-white/5";
-        grid.appendChild(cell);
+        const div = document.createElement('div');
+        div.className = 'mine-cell w-full h-full';
+        fragment.appendChild(div);
     }
+    grid.appendChild(fragment);
 
     btn.disabled = true;
-    btn.innerHTML = `<span class="animate-spin">↻</span> Analisando...`;
+    btn.innerText = "Analisando...";
 
-    // Simulate API delay
+    // Delay reduzido para parecer mais ágil
     setTimeout(() => {
-        // Simple random strategy for demo
-        const stars = [];
-        let numStars = 3; // Default show 3 stars/diamonds for prediction
-
-        while (stars.length < numStars) {
-            const r = Math.floor(Math.random() * 25);
-            if (stars.indexOf(r) === -1) stars.push(r);
-        }
+        const stars = new Set();
+        while (stars.size < 3) stars.add(Math.floor(Math.random() * 25));
 
         const cells = grid.children;
         stars.forEach(idx => {
-            const star = document.createElement('div');
-            star.innerHTML = "⭐"; // Or use an SVG star
-            star.style.fontSize = "1.5rem";
-            cells[idx].classList.add('star', 'border-yellow-500/50', 'bg-yellow-500/10');
-            cells[idx].innerHTML = ''; // clear
-            cells[idx].appendChild(star);
+            cells[idx].innerHTML = "⭐";
+            cells[idx].classList.add('star');
         });
 
-        const hash = Math.random().toString(36).substring(7).toUpperCase();
-        document.getElementById('signal-hash').innerText = `SINAL: ${hash} | ASSERTIVIDADE: ${(Math.random() * (98 - 85) + 85).toFixed(2)}%`;
-
+        document.getElementById('signal-hash').innerText = `ID: ${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
         btn.disabled = false;
-        btn.innerHTML = `
-            <span class="relative z-10 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
-                GERAR NOVO SINAL
-            </span>
-        `;
-    }, 2000);
+        btn.innerText = "GERAR NOVO SINAL";
+    }, 1500);
 }
 
-// Observer to auto-inject when loaded
-const observer = new MutationObserver((mutations) => {
-    // 1. Try to inject Mines panel
-    if (!document.getElementById('mines-control-panel')) {
-        // Check if we have the "em breve" text visible
-        if (document.body.innerText.includes('Em breve') || document.body.innerText.includes('em breve')) {
-            initMinesPanel();
-        }
-    }
+// =========================================================================
+// LOOP LEVE (Substitui MutationObserver pesado)
+// =========================================================================
+// Roda apenas a cada 1 segundo. Custo de CPU quase zero.
+setInterval(injectMines, 1000);
 
-    // 2. Continuous checkout link fix
-    fixCheckoutLinks();
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
-
-// Also try on load immediately
-window.addEventListener('load', () => {
-    setTimeout(initMinesPanel, 1000);
-    setTimeout(fixCheckoutLinks, 1000);
-});
-window.addEventListener('popstate', () => {
-    setTimeout(initMinesPanel, 500);
-    setTimeout(fixCheckoutLinks, 500);
-});
+// Executa uma vez no load
+injectMines();
