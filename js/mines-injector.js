@@ -106,33 +106,55 @@ let minesState = {
 };
 
 function fixCheckoutLinks() {
-    // Find all buttons that look like recharge/buy buttons
-    const buttons = Array.from(document.querySelectorAll('button, a'));
+    // 1. Find buttons INSIDE a modal/dialog (popups) for final checkout
+    // React dialogs usually have role="dialog" or class="fixed"
+    const modalButtons = Array.from(document.querySelectorAll('[role="dialog"] button, .fixed button[class*="primary"], [class*="modal"] button'));
 
-    buttons.forEach(btn => {
-        // Skip if already processed or is our internal button
-        if (btn.hasAttribute('data-fixed-link') || btn.id === 'generate-signals' || btn.id === 'inc-mines' || btn.id === 'dec-mines') return;
+    modalButtons.forEach(btn => {
+        if (btn.hasAttribute('data-fixed-link')) return;
 
         const text = (btn.innerText || '').toLowerCase();
 
-        // Match "Recarregar" (Reload) or "Ativar" (Activate) -> Basic Plan
-        if (text.includes('recarregar') || text.includes('ativar')) {
-            console.log("Corrigindo botão de checkout:", btn);
+        // Target specific action words usually found in the final checkout step
+        if (
+            (text.includes('pagar') || text.includes('assinar') || text.includes('comprar') || text.includes('prosseguir') || text.includes('checkout')) &&
+            !text.includes('fechar') && !text.includes('cancelar')
+        ) {
+            console.log("Corrigindo botão FINAL de checkout (Modal):", btn);
 
-            // Replace the node to remove old event listeners (hard React override)
             const newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
+
+            let targetLink = CHECKOUT_BASIC;
+            // Try to guess if PRO
+            if (text.includes('pro') || (document.querySelector('[role="dialog"]') && document.querySelector('[role="dialog"]').innerText.includes('PRO'))) {
+                targetLink = CHECKOUT_PRO;
+            }
 
             newBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log("Redirecionando para:", CHECKOUT_BASIC);
-                window.location.href = CHECKOUT_BASIC;
+                window.location.href = targetLink;
             });
 
             newBtn.setAttribute('data-fixed-link', 'true');
             newBtn.style.cursor = 'pointer';
         }
+    });
+
+    // 2. Catch actual <a> links pointing to old URLs anywhere
+    const links = Array.from(document.querySelectorAll('a[href*="infinityfree"], a[href*="checkout"], a[href*="produto"]'));
+    links.forEach(a => {
+        if (a.hasAttribute('data-fixed-link') || a.href.includes('ratixpay.site')) return;
+
+        // Determine link type
+        if (a.href.includes('pro') || a.innerText.toLowerCase().includes('pro')) {
+            a.href = CHECKOUT_PRO;
+        } else {
+            // Default to basic if unclassified
+            a.href = CHECKOUT_BASIC;
+        }
+        a.setAttribute('data-fixed-link', 'true');
     });
 }
 
