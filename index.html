@@ -4,53 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oficial do Aviador Bot - Mude de Vida Rápido</title>
+  <title>Predidly Bot - Sistema Inteligente de Predições Aviator e Mines</title>
   <meta name="description"
-    content="Domina o Aviador para faturar 100mil todos os meses com este bot. Transforma 100 meticais em lucros de até 15.000 MZN.">
+    content="Predições automáticas para Aviator e Mines com até 90% de acerto. Ative seu bot e receba as melhores jogadas em tempo real.">
   <meta name="author" content="Predidly Bot">
-
-  <meta property="og:title" content="Oficial do Aviador Bot - Mude de Vida Rápido">
-  <meta property="og:description" content="Domina o Aviador para faturar 100mil todos os meses com este bot">
-  <meta property="og:type" content="website">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="aviator-logo.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="aviator-logo.png">
-  <link rel="shortcut icon" type="image/png" href="aviator-logo.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="aviator-logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logo.jpg">
+  <link rel="shortcut icon" href="images/logo.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo.jpg">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta property="og:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta property="og:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
+  <meta property="og:type" content="website">
+  <meta property="og:image"
+    content="images/id-preview-24da28d9--f39f224b-901f-4ca6-9df3-31e0212a9d58.lovable.app-1765624466487.png">
 
-    /* ===== ANTI-CLONE PROTECTION ===== */
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta name="twitter:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
+  <meta name="twitter:image"
+    content="images/id-preview-24da28d9--f39f224b-901f-4ca6-9df3-31e0212a9d58.lovable.app-1765624466487.png">
+
+  <!-- Robots meta -->
+  <meta name="robots" content="index, follow">
+
+  <script type="module" crossorigin="" src="js/index-Dowo4TYh.js"></script>
+  <link rel="stylesheet" crossorigin="" href="css/index-CB3bEj15.css">
+
+  <style>
+    /* Proteções Anti-Cópia */
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #0a0a0f;
-      color: #ffffff;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      /* Disable text selection */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+      -webkit-touch-callout: none;
     }
 
-    /* Disable image dragging */
-    img,
-    video {
+    img {
       -webkit-user-drag: none;
       -khtml-user-drag: none;
       -moz-user-drag: none;
@@ -59,1045 +58,355 @@
       pointer-events: none;
     }
 
-    .video-container video {
-      pointer-events: auto;
+    /* Permitir seleção em inputs e textareas */
+    input,
+    textarea,
+    [contenteditable="true"] {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
     }
 
-    /* Container */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    /* Desabilitar highlight em mobile */
+    * {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Animations */
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.5;
-        transform: scale(1.2);
-      }
-    }
-
-    @keyframes glow {
-
-      0%,
-      100% {
-        box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
-      }
-
-      50% {
-        box-shadow: 0 0 40px rgba(220, 38, 38, 0.8), 0 0 60px rgba(220, 38, 38, 0.4);
-      }
-    }
-
-    @keyframes shimmer {
-      0% {
-        background-position: -200% center;
-      }
-
-      100% {
-        background-position: 200% center;
-      }
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    @keyframes shake {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      25% {
-        transform: translateX(-5px);
-      }
-
-      75% {
-        transform: translateX(5px);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes sparkle {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
-    }
-
-    @keyframes pulseRing {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    /* Header Section */
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    /* Badge with Animation */
-    .badge-oficial {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(30, 30, 40, 0.9);
-      border: 1px solid #dc2626;
-      color: #dc2626;
-      padding: 0.6rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      animation: glow 2s ease-in-out infinite;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .badge-oficial .plane-icon {
-      font-size: 1rem;
-    }
-
-    .badge-oficial::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.2), transparent);
-      animation: shimmer 3s ease-in-out infinite;
-    }
-
-    /* Hero Title */
-    .hero h1 {
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero h1 .red {
-      color: #ef4444;
-    }
-
-    .hero h1 .gold {
-      color: #fbbf24;
-      animation: pulse 2s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    .hero h2 {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      font-weight: 600;
-      color: #d1d5db;
-      margin-bottom: 1rem;
-      animation: fadeInUp 0.8s ease-out 0.3s both;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      color: #9ca3af;
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
-    }
-
-    .hero p .green {
-      color: #22c55e;
-      font-weight: 600;
-    }
-
-    .hero p .gold {
-      color: #fbbf24;
-      font-weight: 600;
-    }
-
-    /* Vagas Banner */
-    .vagas-banner {
-      background: linear-gradient(135deg, #7f1d1d, #991b1b);
-      padding: 1rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      animation: fadeInUp 0.8s ease-out 0.5s both, shake 5s ease-in-out infinite;
-    }
-
-    .vagas-banner p {
-      font-size: 1rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .vagas-banner .icon {
-      color: #fbbf24;
-      animation: bounce 1s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    .vagas-banner .number {
-      color: #fbbf24;
-      font-size: 1.25rem;
-      font-weight: 800;
-    }
-
-    /* Live Counter */
-    .live-counter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      animation: fadeInUp 0.8s ease-out 0.6s both;
-    }
-
-    .live-dot {
-      width: 10px;
-      height: 10px;
-      background: #ef4444;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .live-counter .number {
-      color: #fbbf24;
-      font-weight: 700;
-    }
-
-    .live-text {
-      color: #60a5fa;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease-out 0.7s both;
-    }
-
-    /* Video Section */
-    .video-section {
-      max-width: 900px;
-      margin: 0 auto 2rem;
-      padding: 0 1rem;
-      animation: scaleIn 0.8s ease-out 0.8s both;
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #1a1a2e;
-      border: 1px solid #2d2d44;
-      box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .video-wrapper:hover {
-      box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      cursor: pointer;
-    }
-
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: auto;
-    }
-
-    /* Play Overlay - VTurb Style */
-    .play-overlay {
-      position: absolute;
+    /* ============================================ */
+    /* LOADING SCREEN - Aparece instantaneamente   */
+    /* ============================================ */
+    #loading-screen {
+      position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.6);
-      transition: opacity 0.3s ease;
-      cursor: pointer;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
-    .play-overlay.hidden {
+    #loading-screen.hidden {
       opacity: 0;
-      pointer-events: none;
+      visibility: hidden;
     }
 
-    .play-btn {
-      width: 80px;
-      height: 80px;
-      background: rgba(239, 68, 68, 0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
-      position: relative;
-    }
-
-    .play-btn::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(239, 68, 68, 0.5);
-      animation: pulseRing 1.5s ease-out infinite;
-    }
-
-    .play-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 50px rgba(239, 68, 68, 0.7);
-    }
-
-    .play-btn svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-      margin-left: 4px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .play-text {
-      color: white;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    /* CTA Button */
-    .cta-section {
-      text-align: center;
-      padding: 2rem 1rem;
-      animation: fadeInUp 0.8s ease-out 1s both;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: white;
-      font-size: 1.25rem;
-      font-weight: 700;
-      padding: 1.25rem 3rem;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
-      position: relative;
-      overflow: hidden;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      animation: shimmer 2s ease-in-out infinite;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 0 50px rgba(34, 197, 94, 0.6);
-      animation: none;
-    }
-
-    .cta-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* Testimonials Section */
-    .testimonials-section {
-      padding: 3rem 1rem;
-    }
-
-    .testimonials-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .testimonials-title h2 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
+    .loader-logo {
+      font-size: 2.5rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #9333ea 0%, #c084fc 50%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+      animation: pulse-glow 2s ease-in-out infinite;
     }
 
-    .testimonials-title p {
-      color: #60a5fa;
-      font-size: 1rem;
-    }
-
-    .testimonials-title .emoji {
-      margin-left: 0.25rem;
-      animation: bounce 1s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    /* Testimonials Grid */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 900px) {
-      .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Testimonial Card */
-    .testimonial-card {
-      background: #1a1a2e;
-      border: 1px solid #2d2d44;
-      border-radius: 12px;
-      padding: 1.25rem;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.8s ease-out both;
-    }
-
-    .testimonial-card:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .testimonial-card:nth-child(2) {
-      animation-delay: 0.15s;
-    }
-
-    .testimonial-card:nth-child(3) {
-      animation-delay: 0.2s;
-    }
-
-    .testimonial-card:nth-child(4) {
-      animation-delay: 0.25s;
-    }
-
-    .testimonial-card:nth-child(5) {
-      animation-delay: 0.3s;
-    }
-
-    .testimonial-card:nth-child(6) {
-      animation-delay: 0.35s;
-    }
-
-    .testimonial-card:nth-child(7) {
-      animation-delay: 0.4s;
-    }
-
-    .testimonial-card:nth-child(8) {
-      animation-delay: 0.45s;
-    }
-
-    .testimonial-card:nth-child(9) {
-      animation-delay: 0.5s;
-    }
-
-    .testimonial-card:nth-child(10) {
-      animation-delay: 0.55s;
-    }
-
-    .testimonial-card:hover {
-      border-color: #4f46e5;
-      box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
-      transform: translateY(-5px);
-    }
-
-    .testimonial-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(147, 51, 234, 0.2);
+      border-top: 4px solid #9333ea;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    .loader-text {
+      color: #a1a1aa;
       font-size: 0.9rem;
-      color: white;
+      font-family: 'Inter', sans-serif;
+      animation: fade-pulse 1.5s ease-in-out infinite;
     }
 
-    .avatar-jm {
-      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    .loader-progress {
+      width: 200px;
+      height: 4px;
+      background: rgba(147, 51, 234, 0.2);
+      border-radius: 2px;
+      margin-top: 1rem;
+      overflow: hidden;
     }
 
-    .avatar-et {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+    .loader-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #9333ea, #c084fc, #fbbf24);
+      border-radius: 2px;
+      animation: loading-progress 2s ease-in-out infinite;
     }
 
-    .avatar-aa {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-    }
-
-    .avatar-gl {
-      background: linear-gradient(135deg, #ec4899, #db2777);
-    }
-
-    .avatar-zc {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-    }
-
-    .avatar-cp {
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-    }
-
-    .avatar-fj {
-      background: linear-gradient(135deg, #f97316, #ea580c);
-    }
-
-    .avatar-bd {
-      background: linear-gradient(135deg, #14b8a6, #0d9488);
-    }
-
-    .avatar-rv {
-      background: linear-gradient(135deg, #a855f7, #9333ea);
-    }
-
-    .avatar-en {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-    }
-
-    .testimonial-info h3 {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .testimonial-info span {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    .testimonial-text {
-      font-size: 0.9rem;
-      color: #d1d5db;
-      line-height: 1.5;
-      font-style: italic;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid #2d2d44;
-      margin-top: 2rem;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .footer p {
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-
-    .footer .brand {
-      color: #60a5fa;
-    }
-
-    /* Notification Popup */
-    .notification-popup {
-      position: fixed;
-      bottom: 1rem;
-      left: 1rem;
-      background: linear-gradient(135deg, #7f1d1d, #991b1b);
-      border: 1px solid #dc2626;
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      max-width: 300px;
-      z-index: 100;
-      transform: translateX(-120%);
-      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .notification-popup.show {
-      transform: translateX(0);
-      animation: shake 0.5s ease-in-out;
-    }
-
-    .notification-popup p {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: white;
-    }
-
-    .notification-popup .name {
-      color: #fbbf24;
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 1.5rem;
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      .hero h2 {
-        font-size: 1rem;
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
 
-      .cta-btn {
-        font-size: 1rem;
-        padding: 1rem 2rem;
+      50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes fade-pulse {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes loading-progress {
+      0% {
+        width: 0%;
+        margin-left: 0;
+      }
+
+      50% {
+        width: 70%;
+        margin-left: 15%;
+      }
+
+      100% {
         width: 100%;
-        max-width: 320px;
-      }
-
-      .play-btn {
-        width: 60px;
-        height: 60px;
-      }
-
-      .play-btn svg {
-        width: 24px;
-        height: 24px;
+        margin-left: 0;
       }
     }
   </style>
-</head>
-
-<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;">
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <span class="badge-oficial"><span class="plane-icon">✈</span> Bot Aviator Oficial</span>
-
-      <h1>
-        <span class="red">Mude de vida Rápido:</span><br>
-        Domina o Aviador para faturar <span class="gold">100mil</span>
-      </h1>
-      <h2>todos os meses com este bot</h2>
-
-      <p>Transforma <span class="green">100 meticais</span> em lucros de até <span class="gold">15.000 MZN</span>
-        .</p>
-    </div>
-  </section>
-
-  <!-- Vagas Banner -->
-  <div class="container">
-    <div class="vagas-banner">
-      <p><span class="icon">⚠️</span> Vagas disponíveis: <span class="number" id="vagas-count">13</span> restantes
-      </p>
-    </div>
-  </div>
-
-  <!-- Live Counter -->
-  <div class="container" style="text-align: center;">
-    <div class="live-counter">
-      <span class="live-dot"></span>
-      <span>💬</span>
-      <span class="number" id="viewers-count">146</span>
-      <span>pessoas estão a assistir agora…</span>
-    </div>
-    <p class="live-text">Vê o Bot operando ao vivo.</p>
-  </div>
-
-  <!-- Video Section -->
-  <section class="video-section">
-    <div class="video-wrapper">
-      <div class="video-container" id="video-container">
-        <video id="vsl-video" preload="metadata" playsinline controlsList="nodownload nofullscreen noremoteplayback"
-          disablePictureInPicture>
-          <source
-            src="https://res.cloudinary.com/dm3glrwax/video/upload/v1765662694/clone-sites/aviator-flyer-vsl-final.mp4"
-            type="video/mp4">
-          Seu navegador não suporta vídeo HTML5.
-        </video>
-
-        <div class="play-overlay" id="play-overlay">
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-          <span class="play-text">Clique para assistir</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Button -->
-  <section class="cta-section">
-    <a href="#" class="cta-btn" id="cta-btn">
-      🚀 Ativar Agora
-    </a>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials-section">
-    <div class="testimonials-title">
-      <h2>Moçambicanos que já usaram</h2>
-      <p>o Bot Aviador <span class="emoji">👇</span></p>
-    </div>
-
-    <div class="testimonials-grid">
-      <!-- Joaquim M. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-jm">JM</div>
-          <div class="testimonial-info">
-            <h3>Joaquim M.</h3>
-            <span>( Maputo )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Depositei 100 meticais e em 3 dias fiz 230.000 MZN. Comprei o meu primeiro
-          carro! "</p>
-      </div>
-
-      <!-- Esperança T. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-et">ET</div>
-          <div class="testimonial-info">
-            <h3>Esperança T.</h3>
-            <span>( Beira )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Não acreditei até ver o lucro subir em tempo real. Hoje já consegui pagar
-          a entrada da minha casa. "</p>
-      </div>
-
-      <!-- Armando A. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-aa">AA</div>
-          <div class="testimonial-info">
-            <h3>Armando A.</h3>
-            <span>( Tete )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" O bot é simplesmente surreal. Fiz 420.000 meticais em menos de 1 mês.
-          Obrigado Ilídio! "</p>
-      </div>
-
-      <!-- Graça L. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-gl">GL</div>
-          <div class="testimonial-info">
-            <h3>Graça L.</h3>
-            <span>( Nampula )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Comecei com 200 MZN e já passei dos 300.000. Nunca pensei que seria
-          possível. "</p>
-      </div>
-
-      <!-- Zacarias C. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-zc">ZC</div>
-          <div class="testimonial-info">
-            <h3>Zacarias C.</h3>
-            <span>( Quelimane )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Lucros constantes. Já tirei mais de 250.000 MZN e comprei a minha mota
-          nova. "</p>
-      </div>
-
-      <!-- Celestino P. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-cp">CP</div>
-          <div class="testimonial-info">
-            <h3>Celestino P.</h3>
-            <span>( Matola )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" O bot não erra. Fiz 320 mil e vou a juntar pra comprar terreno. "</p>
-      </div>
-
-      <!-- Felismina J. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-fj">FJ</div>
-          <div class="testimonial-info">
-            <h3>Felismina J.</h3>
-            <span>( Chimoio )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Comecei pra testar e em 2 semanas já bati 270.000 MZN. Já recomendo pra
-          toda família. "</p>
-      </div>
-
-      <!-- Benedito D. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-bd">BD</div>
-          <div class="testimonial-info">
-            <h3>Benedito D.</h3>
-            <span>( Maputo )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Nunca vi nada igual. Fiz 400 mil e levantei em minutos. Vale cada centavo.
-          "</p>
-      </div>
-
-      <!-- Rosalina V. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-rv">RV</div>
-          <div class="testimonial-info">
-            <h3>Rosalina V.</h3>
-            <span>( Beira )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" O bot faz o que promete. De 100 pra 29000, e depois fui escalando até
-          280.000 MZN. "</p>
-      </div>
-
-      <!-- Elias N. -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-avatar avatar-en">EN</div>
-          <div class="testimonial-info">
-            <h3>Elias N.</h3>
-            <span>( Nacala )</span>
-          </div>
-        </div>
-        <p class="testimonial-text">" Consegui comprar o meu carro usado com os lucros do Aviator Bot. Gratidão
-          total. "</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 <span class="brand">predidly bot</span></p>
-    <p style="margin-top: 0.5rem;">Este site não é afiliado ao Aviator oficial. Os resultados individuais podem
-      variar.</p>
-  </footer>
-
-  <!-- Notification Popup -->
-  <div class="notification-popup" id="notification-popup">
-    <p><span class="name">Samuel</span> acaba de fazer a ativação agora mesmo!</p>
-  </div>
 
   <script>
-    // ===== ANTI-CLONE PROTECTION (Silent) =====
+    // ============================================
+    // PROTEÇÕES ANTI-CÓPIA E ANTI-INSPEÇÃO
+    // ============================================
 
-    // Block right-click
-    document.addEventListener('contextmenu', (e) => {
+    // Desabilitar clique direito
+    document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
+      return false;
     });
 
-    // Block keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Ctrl+P, PrintScreen
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
-        (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p')) ||
-        e.key === 'PrintScreen'
-      ) {
+    // Desabilitar atalhos de teclado comuns para desenvolvedor
+    document.addEventListener('keydown', function (e) {
+      // F12
+      if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+Shift+I (DevTools)
+      if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+Shift+J (Console)
+      if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+Shift+C (Inspect Element)
+      if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+U (View Source)
+      if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+S (Save Page)
+      if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+P (Print)
+      if (e.ctrlKey && (e.key === 'P' || e.key === 'p' || e.keyCode === 80)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+A (Select All)
+      if (e.ctrlKey && (e.key === 'A' || e.key === 'a' || e.keyCode === 65)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Ctrl+C (Copy) - exceto em inputs
+      if (e.ctrlKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67) && !e.shiftKey) {
+        if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
+
+    // Desabilitar arrastar elementos
+    document.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Desabilitar seleção de texto com mouse
+    document.addEventListener('selectstart', function (e) {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         return false;
       }
     });
 
-    // Block copy/paste
-    document.addEventListener('copy', (e) => {
-      e.preventDefault();
-    });
-
-    document.addEventListener('cut', (e) => {
-      e.preventDefault();
-    });
-
-    // Block drag
-    document.addEventListener('dragstart', (e) => {
-      e.preventDefault();
-    });
-
-    // ===== VIDEO PLAYER LOGIC =====
-    const video = document.getElementById('vsl-video');
-    const overlay = document.getElementById('play-overlay');
-    const videoContainer = document.getElementById('video-container');
-    let isFirstPlay = true;
-
-    // Video starts paused - user must click to play
-    video.pause();
-
-    // Click on overlay to start video
-    overlay.addEventListener('click', function () {
-      video.play();
-      video.muted = false;
-      overlay.classList.add('hidden');
-      isFirstPlay = false;
-    });
-
-    // Click on video to pause/resume
-    video.addEventListener('click', function () {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
+    // Desabilitar cópia
+    document.addEventListener('copy', function (e) {
+      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        return false;
       }
     });
 
-    // Show overlay when video ends
-    video.addEventListener('ended', function () {
-      overlay.classList.remove('hidden');
-      isFirstPlay = true;
-    });
-
-
-    // ===== CTA BUTTON =====
-    const ctaBtn = document.getElementById('cta-btn');
-    ctaBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      this.innerHTML = '⏳ Redirecionando...';
-      this.style.pointerEvents = 'none';
-      this.style.animation = 'none';
-
-      setTimeout(() => {
-        // Replace with your checkout link
-        window.location.href = 'https://predidly-bot-ten.vercel.app/';
-      }, 1500);
-    });
-
-    // ===== LIVE VIEWERS COUNTER =====
-    const viewersCount = document.getElementById('viewers-count');
-    let viewers = 146;
-
-    setInterval(() => {
-      const change = Math.floor(Math.random() * 10) - 4;
-      viewers = Math.max(90, Math.min(200, viewers + change));
-      viewersCount.textContent = viewers;
-    }, 3000);
-
-    // ===== VAGAS COUNTER =====
-    const vagasCount = document.getElementById('vagas-count');
-    let vagas = 13;
-
-    setInterval(() => {
-      if (Math.random() > 0.7 && vagas > 3) {
-        vagas--;
-        vagasCount.textContent = vagas;
+    // Desabilitar cortar
+    document.addEventListener('cut', function (e) {
+      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        return false;
       }
-    }, 30000);
+    });
 
-    // ===== NOTIFICATION POPUP =====
-    const names = ['Joaquim', 'Esperança', 'Armando', 'Graça', 'Zacarias', 'Celestino', 'Felismina', 'Benedito', 'Rosalina', 'Elias', 'Fátima', 'Albino', 'Amélia', 'Justino'];
-    const popup = document.getElementById('notification-popup');
+    // Detectar DevTools aberto (método básico)
+    (function () {
+      const devtools = {
+        isOpen: false,
+        orientation: undefined
+      };
 
-    function showNotification() {
-      const name = names[Math.floor(Math.random() * names.length)];
-      popup.querySelector('.name').textContent = name;
-      popup.classList.add('show');
+      const threshold = 160;
 
-      setTimeout(() => {
-        popup.classList.remove('show');
-      }, 4000);
-    }
+      const emitEvent = (isOpen, orientation) => {
+        globalThis.dispatchEvent(new CustomEvent('devtoolschange', {
+          detail: {
+            isOpen,
+            orientation
+          }
+        }));
+      };
 
-    // Show first notification after 8 seconds
-    setTimeout(showNotification, 8000);
+      setInterval(() => {
+        const widthThreshold = globalThis.outerWidth - globalThis.innerWidth > threshold;
+        const heightThreshold = globalThis.outerHeight - globalThis.innerHeight > threshold;
+        const orientation = widthThreshold ? 'vertical' : 'horizontal';
 
-    // Then show periodically
-    setInterval(showNotification, 20000);
+        if (!(heightThreshold && widthThreshold) &&
+          ((globalThis.Firebug && globalThis.Firebug.chrome && globalThis.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
+          if (!devtools.isOpen || devtools.orientation !== orientation) {
+            emitEvent(true, orientation);
+          }
+          devtools.isOpen = true;
+          devtools.orientation = orientation;
+        } else {
+          if (devtools.isOpen) {
+            emitEvent(false, undefined);
+          }
+          devtools.isOpen = false;
+          devtools.orientation = undefined;
+        }
+      }, 500);
+    })();
 
-    // ===== CONSOLE PROTECTION =====
-    console.log('%c⚠️ PARE!', 'color: red; font-size: 50px; font-weight: bold;');
-    console.log('%cEste é um recurso do navegador destinado a desenvolvedores. Se alguém disse para você copiar e colar algo aqui, isso é uma fraude.', 'color: #333; font-size: 16px;');
+    // Console warning
+    console.log('%c⚠️ AVISO DE SEGURANÇA', 'color: red; font-size: 30px; font-weight: bold;');
+    console.log('%cEste é um recurso do navegador destinado a desenvolvedores.', 'font-size: 16px;');
+    console.log('%cNão cole nenhum código aqui. Isso pode comprometer sua conta.', 'font-size: 14px; color: orange;');
+
+    // ============================================
+    // 🔧 MODO DESENVOLVIMENTO - ATIVAÇÃO AUTOMÁTICA
+    // ============================================
+    // Ativa automaticamente quando rodando em localhost
+    (function () {
+      var isLocalhost = window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        window.location.hostname.startsWith('192.168.');
+
+      if (isLocalhost) {
+        // Verificar se já está ativado
+        var isActivated = localStorage.getItem('pf_activated') === 'true';
+
+        if (!isActivated) {
+          // Ativar conta automaticamente
+          localStorage.setItem('pf_activated', 'true');
+          localStorage.setItem('pf_balance', '1000'); // 1000 MT de saldo de teste
+          localStorage.setItem('pf_activation_date', new Date().toISOString());
+
+          console.log('%c🔓 MODO DEV ATIVADO', 'color: #22c55e; font-size: 20px; font-weight: bold;');
+          console.log('%c✅ Conta ativada automaticamente (localhost)', 'color: #22c55e; font-size: 14px;');
+          console.log('%c💰 Saldo de teste: 1000 MT', 'color: #fbbf24; font-size: 14px;');
+        } else {
+          console.log('%c🔓 MODO DEV', 'color: #22c55e; font-size: 16px; font-weight: bold;');
+          console.log('%c✅ Conta já ativada | Saldo: ' + (localStorage.getItem('pf_balance') || '0') + ' MT', 'color: #22c55e; font-size: 12px;');
+        }
+      }
+    })();
+  </script>
+
+</head>
+
+<body>
+  <!-- Loading Screen - Aparece instantaneamente -->
+  <div id="loading-screen">
+    <div class="loader-logo">🚀 Predidly Bot</div>
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Carregando sistema de predições...</div>
+    <div class="loader-progress">
+      <div class="loader-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- App React -->
+  <div id="root"></div>
+
+  <script>
+    // Ocultar loading quando o app carregar
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var loader = document.getElementById('loading-screen');
+        if (loader) {
+          loader.classList.add('hidden');
+          // Remover do DOM após a animação
+          setTimeout(function () {
+            loader.remove();
+          }, 500);
+        }
+      }, 500);
+    });
+
+    // Fallback: ocultar após 10 segundos mesmo se algo falhar
+    setTimeout(function () {
+      var loader = document.getElementById('loading-screen');
+      if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+      }
+    }, 10000);
   </script>
 </body>
 

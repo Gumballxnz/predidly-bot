@@ -1,127 +1,80 @@
-# 🚀 Predidly Bot - Landing Page
+# 🚀 Predidly Bot
 
-Uma landing page moderna e otimizada para conversão, desenvolvida para promover o sistema de predições Aviator Bot.
+Sistema inteligente de predições automáticas para Aviator e Mines com até 96% de precisão.
 
-![Preview](https://img.shields.io/badge/Status-Live-brightgreen)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Predidly Bot](images/id-preview-24da28d9--f39f224b-901f-4ca6-9df3-31e0212a9d58.lovable.app-1765624466487.png)
 
 ## 📋 Sobre o Projeto
 
-Landing page de alta conversão para o Bot Aviador, com:
+O **Predidly Bot** é uma plataforma avançada de predições automáticas que utiliza algoritmos inteligentes para gerar sinais de alta precisão para jogos como Aviator e Mines.
 
-- ✅ Design responsivo (mobile-first)
-- ✅ VSL (Video Sales Letter) integrada via Cloudinary
-- ✅ Player estilo VTurb (clique para assistir)
-- ✅ Depoimentos de clientes com fotos reais
-- ✅ Contadores dinâmicos (vagas, visualizações)
-- ✅ Notificações de prova social em tempo real
-- ✅ SEO otimizado
-- ✅ **Proteção Anti-Clone completa**
+### ✨ Características
 
-## 🔒 Proteções de Segurança
+- 🤖 **Bot Automático** - Predições geradas automaticamente 24/7
+- 📊 **Alta Precisão** - Taxa de acerto de até 96%
+- ⚡ **Tempo Real** - Sinais instantâneos sem delay
+- 💰 **Gestão de Banca** - Sistema integrado de gerenciamento
+- 📱 **Responsivo** - Funciona perfeitamente em mobile e desktop
+- 🔒 **Seguro** - Proteções anti-cópia implementadas
 
-Este site inclui múltiplas camadas de proteção:
+## 🛠️ Tecnologias
 
-- 🚫 **Anti-Copy** - Bloqueia cópia de texto
-- 🚫 **Anti-Print Screen** - Detecta tentativas de captura
-- 🚫 **Anti-Right Click** - Desabilita menu de contexto
-- 🚫 **Anti-DevTools** - Detecta abertura do console
-- 🚫 **Anti-Drag** - Impede arrastar imagens/vídeos
-- 🚫 **Anti-Keyboard Shortcuts** - Bloqueia F12, Ctrl+U, etc.
+- React 18
+- TailwindCSS
+- Radix UI
+- Vercel (Hosting)
+- RatixPay (Pagamentos)
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Deploy
 
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos modernos com animações avançadas
-- **JavaScript** - Interatividade e proteções
-- **Cloudinary** - Hospedagem de vídeo
-- **Google Fonts** - Tipografia (Inter)
+Este projeto está configurado para deploy automático no Vercel.
+
+### Deploy Manual
+
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
 
 ## 📁 Estrutura do Projeto
 
 ```
 predidly-bot/
-├── index.html    # Página principal
-└── README.md     # Este arquivo
+├── index.html          # Página principal
+├── vercel.json         # Configuração Vercel
+├── package.json        # Dependências
+├── api/
+│   ├── webhook.js      # Webhook de pagamentos
+│   ├── check-activation.js
+│   └── recharge.js
+├── css/
+├── js/
+├── images/
+└── data/
 ```
 
-## 🚀 Como Usar
+## 💳 Sistema de Pagamentos
 
-### Deploy no GitHub Pages
+O sistema utiliza RatixPay para processar pagamentos via M-Pesa.
 
-1. Faça upload deste repositório para o GitHub
-2. Vá em **Settings** > **Pages**
-3. Em **Source**, selecione `main` branch e `/ (root)`
-4. Clique em **Save**
-5. Acesse: `https://seu-usuario.github.io/predidly-bot`
+### Produtos Disponíveis
 
-### Deploy no Vercel
+| Produto | Preço | Bônus |
+|---------|-------|-------|
+| Ativação Básica | 100 MZN | +200 MT |
+| Predidly PRO | 269 MZN | +1.000 MT |
 
-1. Conecte o repositório no [Vercel](https://vercel.com)
-2. Clique em **Deploy**
-3. Pronto! O site estará online
+## 📞 Suporte
 
-### Deploy no Netlify
+Para suporte, entre em contato através do WhatsApp ou Telegram.
 
-1. Arraste a pasta para [Netlify Drop](https://app.netlify.com/drop)
-2. O site será publicado automaticamente
+## 📄 Licença
 
-## ⚙️ Configuração
-
-### Alterar Link de Checkout
-
-No arquivo `index.html`, localize a linha:
-
-```javascript
-window.location.href = 'https://pay.example.com/checkout';
-```
-
-Substitua pela URL do seu checkout.
-
-## 🎬 Player de Vídeo (Estilo VTurb)
-
-O player de vídeo funciona assim:
-1. Usuário vê o overlay com botão "Clique para assistir"
-2. Ao clicar, o vídeo inicia com som
-3. Ao terminar ou pausar, o overlay reaparece
-
-## 📱 Responsividade
-
-A página é totalmente responsiva:
-
-- 📱 Mobile (< 640px)
-- 📱 Tablet (640px - 900px)
-- 💻 Desktop (> 900px)
-
-## 🎥 Vídeo VSL
-
-O vídeo está hospedado no Cloudinary:
-
-```
-https://res.cloudinary.com/dm3glrwax/video/upload/v1765662694/clone-sites/aviator-flyer-vsl-final.mp4
-```
-
-## ✨ Animações
-
-O site inclui várias animações CSS:
-
-- **Glow** - Badge brilhando
-- **Float** - Elementos flutuando
-- **Shimmer** - Brilho passando
-- **Bounce** - Botões pulando
-- **Shake** - Banner tremendo
-- **FadeInUp** - Elementos aparecendo
-
-## 📝 Licença
-
-Este projeto é para uso pessoal/comercial do proprietário.
-
-## 👤 Autor
-
-Desenvolvido para **Predidly Bot**
+Este projeto é proprietário. Todos os direitos reservados.
 
 ---
 
-**© 2025 Predidly Bot** - Todos os direitos reservados.
+**Desenvolvido por Elton Bot** | © 2025 Predidly Bot
