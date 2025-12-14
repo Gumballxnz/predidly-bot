@@ -1,5 +1,5 @@
-// Predidly Bot - V8
-// Abordagem diferente: procura qualquer item da lista e adiciona no final
+// Predidly Bot - V9 (Menos Invasivo)
+// Só intercepta checkouts específicos, não interfere com o resto do site
 
 // LINKS RATIXPAY
 const LINK_100 = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
@@ -12,114 +12,102 @@ const NEW_HOUSES = [
     { emoji: '🐘', name: 'Elephante Bet' }
 ];
 
-// CSS Performance
+// CSS Performance (mínimo)
 const style = document.createElement('style');
 style.textContent = `
-    * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-    .animate-pulse, .animate-spin { animation: none !important; }
+    .animate-pulse { animation: none !important; }
 `;
 document.head.appendChild(style);
 
 // ========== FUNÇÃO: Injetar casas de apostas ==========
 function injectHouses() {
-    // Procura por qualquer casa conhecida para identificar a estrutura da lista
-    const knownHouses = ['1xBet', 'Bet365', 'Betway', 'Paripesa', '22Bet'];
-    let referenceItem = null;
-
-    // Procura por elementos [role="option"] que são os itens da lista
     const options = document.querySelectorAll('[role="option"]');
+    if (options.length === 0) return;
 
-    for (let opt of options) {
-        const txt = opt.innerText;
-        // Verifica se é uma casa de apostas conhecida
-        if (knownHouses.some(h => txt.includes(h))) {
-            referenceItem = opt;
-            // Não faz break, queremos o último
-        }
-    }
-
-    if (!referenceItem) {
-        // Tenta outra abordagem: procura por data-radix-collection-item
-        const radixItems = document.querySelectorAll('[data-radix-collection-item]');
-        if (radixItems.length > 0) {
-            referenceItem = radixItems[radixItems.length - 1];
-        }
-    }
-
-    if (!referenceItem) return;
-
-    const container = referenceItem.parentElement;
-    if (!container || container.hasAttribute('data-v8-done')) return;
-
-    // Verifica se já tem Placard (evita duplicação)
+    const container = options[0].parentElement;
+    if (!container || container.hasAttribute('data-v9')) return;
     if (container.innerText.includes('Placard')) return;
 
-    container.setAttribute('data-v8-done', 'true');
+    const lastItem = options[options.length - 1];
+    container.setAttribute('data-v9', '1');
 
     NEW_HOUSES.forEach(house => {
-        const newItem = referenceItem.cloneNode(true);
+        const newItem = lastItem.cloneNode(true);
 
-        // Pega o HTML e substitui o nome e emoji
-        let html = newItem.innerHTML;
-
-        // Substitui qualquer nome de casa conhecida pelo novo nome
-        knownHouses.forEach(h => {
-            html = html.replace(new RegExp(h, 'gi'), house.name);
+        // Substitui textos
+        const spans = newItem.querySelectorAll('span');
+        spans.forEach(span => {
+            const txt = span.innerText.trim();
+            // Se for emoji (1-2 chars), substitui
+            if (txt.length <= 2 && txt.length > 0) {
+                span.innerText = house.emoji;
+            }
+            // Se for nome de casa, substitui
+            if (txt.length > 3 && txt.length < 20) {
+                span.innerText = house.name;
+            }
         });
-        html = html.replace(/Sportingbet/gi, house.name);
 
-        // Substitui emojis conhecidos
-        html = html.replace(/🏆|⚡|👑|🔥|💰|🎰/g, house.emoji);
-
-        newItem.innerHTML = html;
-
-        // Remove estados de seleção
+        // Remove estados
         newItem.removeAttribute('data-highlighted');
         newItem.removeAttribute('data-state');
         newItem.removeAttribute('aria-selected');
-        newItem.classList.remove('bg-primary', 'bg-accent');
 
-        // Garante que o check mark não aparece
-        const checkSvg = newItem.querySelector('svg');
-        if (checkSvg) checkSvg.remove();
+        // Remove checkmark se tiver
+        const svg = newItem.querySelector('svg');
+        if (svg) svg.style.display = 'none';
 
         container.appendChild(newItem);
     });
-
-    console.log("✅ V8: Casas adicionadas com sucesso!");
 }
 
-// ========== FUNÇÃO: Corrigir botões de checkout ==========
+// ========== FUNÇÃO: Corrigir APENAS botões de checkout ==========
+// Mais específico para não quebrar outros botões
 function fixCheckoutButtons() {
-    document.querySelectorAll('button, a').forEach(btn => {
-        if (btn.hasAttribute('data-v8')) return;
+    // Procura especificamente por botões em modais/dialogs de pagamento
+    const dialogs = document.querySelectorAll('[role="dialog"], .fixed, [data-state="open"]');
 
-        const txt = btn.innerText.toLowerCase();
+    dialogs.forEach(dialog => {
+        const buttons = dialog.querySelectorAll('button');
 
-        if (txt.includes('continuar') || txt.includes('pagar') || txt.includes('assinar') || txt.includes('prosseguir')) {
-            btn.setAttribute('data-v8', '1');
+        buttons.forEach(btn => {
+            if (btn.hasAttribute('data-v9')) return;
 
-            btn.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
+            const txt = btn.innerText.toLowerCase();
 
-                let url = LINK_100;
-                if (txt.includes('pro') || txt.includes('269')) url = LINK_269;
+            // Só intercepta se tiver EXATAMENTE essas palavras-chave de checkout
+            const isCheckout =
+                txt.includes('continuar para ativação') ||
+                txt.includes('pagar agora') ||
+                txt.includes('finalizar compra') ||
+                txt.includes('confirmar pagamento');
 
-                window.location.href = url;
-                return false;
-            };
-        }
+            if (isCheckout) {
+                btn.setAttribute('data-v9', '1');
+
+                // Adiciona evento sem remover os existentes
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    let url = LINK_100;
+                    if (txt.includes('pro') || txt.includes('269')) url = LINK_269;
+
+                    window.location.href = url;
+                }, true); // capture phase
+            }
+        });
     });
 }
 
-// ========== LOOP PRINCIPAL ==========
+// ========== LOOP PRINCIPAL (menos frequente) ==========
 function mainLoop() {
     fixCheckoutButtons();
     injectHouses();
 }
 
-setInterval(mainLoop, 500); // Mais frequente para pegar o dropdown
-mainLoop();
-window.addEventListener('load', mainLoop);
+// Executa a cada 1 segundo (menos invasivo)
+setInterval(mainLoop, 1000);
+
+// Executa no load
+window.addEventListener('load', () => setTimeout(mainLoop, 500));
