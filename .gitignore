@@ -28,3 +28,4 @@ build/
 
 # Local development
 replace.js
+.vercel
