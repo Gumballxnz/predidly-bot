@@ -12,12 +12,42 @@ const NEW_HOUSES = [
     { emoji: '🐘', name: 'Elephante Bet' }
 ];
 
-// CSS Performance (mínimo)
+// CSS Performance + Mobile Fix
 const style = document.createElement('style');
 style.textContent = `
+    /* Remove blur para performance */
+    * { 
+        backdrop-filter: none !important; 
+        -webkit-backdrop-filter: none !important;
+    }
     .animate-pulse { animation: none !important; }
+    
+    /* Mobile: Impedir zoom e melhorar toque */
+    html {
+        touch-action: manipulation;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+    body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: none;
+    }
+    input, select, textarea, button {
+        font-size: 16px !important; /* Impede zoom em inputs no iOS */
+    }
 `;
 document.head.appendChild(style);
+
+// Corrigir viewport para mobile
+const existingViewport = document.querySelector('meta[name="viewport"]');
+if (existingViewport) {
+    existingViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+} else {
+    const viewport = document.createElement('meta');
+    viewport.name = 'viewport';
+    viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+    document.head.appendChild(viewport);
+}
 
 // ========== FUNÇÃO: Injetar casas de apostas ==========
 function injectHouses() {
