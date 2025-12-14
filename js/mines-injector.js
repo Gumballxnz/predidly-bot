@@ -96,8 +96,8 @@ const MINES_HTML = `
 `;
 
 // CHECKOUT LINKS
-const CHECKOUT_BASIC = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
-const CHECKOUT_PRO = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
+const CHECKOUT_BASIC = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
+const CHECKOUT_PRO = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
 
 let minesState = {
     mines: 3,
