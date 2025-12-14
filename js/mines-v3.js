@@ -1,5 +1,5 @@
-// Predidly Bot - V7
-// Corrigido: Nomes das casas de apostas
+// Predidly Bot - V8
+// Abordagem diferente: procura qualquer item da lista e adiciona no final
 
 // LINKS RATIXPAY
 const LINK_100 = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
@@ -22,52 +22,82 @@ document.head.appendChild(style);
 
 // ========== FUNÇÃO: Injetar casas de apostas ==========
 function injectHouses() {
-    // Procura pelo item "Sportingbet" na lista
-    const allDivs = document.querySelectorAll('div, span');
-    let sportingbetItem = null;
+    // Procura por qualquer casa conhecida para identificar a estrutura da lista
+    const knownHouses = ['1xBet', 'Bet365', 'Betway', 'Paripesa', '22Bet'];
+    let referenceItem = null;
 
-    for (let el of allDivs) {
-        if (el.innerText === 'Sportingbet' && el.innerText.length < 20) {
-            // Sobe até o elemento pai que representa o item completo da lista
-            sportingbetItem = el.closest('[role="option"]') || el.closest('[data-radix-collection-item]') || el.parentElement.parentElement;
-            break;
+    // Procura por elementos [role="option"] que são os itens da lista
+    const options = document.querySelectorAll('[role="option"]');
+
+    for (let opt of options) {
+        const txt = opt.innerText;
+        // Verifica se é uma casa de apostas conhecida
+        if (knownHouses.some(h => txt.includes(h))) {
+            referenceItem = opt;
+            // Não faz break, queremos o último
         }
     }
 
-    if (!sportingbetItem) return;
+    if (!referenceItem) {
+        // Tenta outra abordagem: procura por data-radix-collection-item
+        const radixItems = document.querySelectorAll('[data-radix-collection-item]');
+        if (radixItems.length > 0) {
+            referenceItem = radixItems[radixItems.length - 1];
+        }
+    }
 
-    const container = sportingbetItem.parentElement;
-    if (!container || container.hasAttribute('data-houses-v7')) return;
-    container.setAttribute('data-houses-v7', 'true');
+    if (!referenceItem) return;
+
+    const container = referenceItem.parentElement;
+    if (!container || container.hasAttribute('data-v8-done')) return;
+
+    // Verifica se já tem Placard (evita duplicação)
+    if (container.innerText.includes('Placard')) return;
+
+    container.setAttribute('data-v8-done', 'true');
 
     NEW_HOUSES.forEach(house => {
-        const newItem = sportingbetItem.cloneNode(true);
+        const newItem = referenceItem.cloneNode(true);
 
-        // Substitui o texto "Sportingbet" pelo nome da nova casa em TODO o HTML interno
-        newItem.innerHTML = newItem.innerHTML
-            .replace(/Sportingbet/gi, house.name)
-            .replace(/🏆/g, house.emoji);
+        // Pega o HTML e substitui o nome e emoji
+        let html = newItem.innerHTML;
 
-        // Remove estados
+        // Substitui qualquer nome de casa conhecida pelo novo nome
+        knownHouses.forEach(h => {
+            html = html.replace(new RegExp(h, 'gi'), house.name);
+        });
+        html = html.replace(/Sportingbet/gi, house.name);
+
+        // Substitui emojis conhecidos
+        html = html.replace(/🏆|⚡|👑|🔥|💰|🎰/g, house.emoji);
+
+        newItem.innerHTML = html;
+
+        // Remove estados de seleção
         newItem.removeAttribute('data-highlighted');
         newItem.removeAttribute('data-state');
         newItem.removeAttribute('aria-selected');
+        newItem.classList.remove('bg-primary', 'bg-accent');
+
+        // Garante que o check mark não aparece
+        const checkSvg = newItem.querySelector('svg');
+        if (checkSvg) checkSvg.remove();
 
         container.appendChild(newItem);
     });
 
-    console.log("✅ Casas adicionadas: Placard, 888bet, Elephante Bet");
+    console.log("✅ V8: Casas adicionadas com sucesso!");
 }
 
 // ========== FUNÇÃO: Corrigir botões de checkout ==========
 function fixCheckoutButtons() {
     document.querySelectorAll('button, a').forEach(btn => {
-        if (btn.hasAttribute('data-v7-fixed')) return;
+        if (btn.hasAttribute('data-v8')) return;
 
         const txt = btn.innerText.toLowerCase();
 
         if (txt.includes('continuar') || txt.includes('pagar') || txt.includes('assinar') || txt.includes('prosseguir')) {
-            btn.setAttribute('data-v7-fixed', 'true');
+            btn.setAttribute('data-v8', '1');
 
             btn.onclick = (e) => {
                 e.preventDefault();
@@ -75,11 +105,8 @@ function fixCheckoutButtons() {
                 e.stopImmediatePropagation();
 
                 let url = LINK_100;
-                if (txt.includes('pro') || txt.includes('269')) {
-                    url = LINK_269;
-                }
+                if (txt.includes('pro') || txt.includes('269')) url = LINK_269;
 
-                console.log("✅ Redirecionando para RatixPay:", url);
                 window.location.href = url;
                 return false;
             };
@@ -93,6 +120,6 @@ function mainLoop() {
     injectHouses();
 }
 
-setInterval(mainLoop, 1000);
+setInterval(mainLoop, 500); // Mais frequente para pegar o dropdown
 mainLoop();
 window.addEventListener('load', mainLoop);
