@@ -95,11 +95,47 @@ const MINES_HTML = `
 </style>
 `;
 
+// CHECKOUT LINKS
+const CHECKOUT_BASIC = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
+const CHECKOUT_PRO = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
+
 let minesState = {
     mines: 3,
     attempts: 3,
     strategy: 'Conservador'
 };
+
+function fixCheckoutLinks() {
+    // Find all buttons that look like recharge/buy buttons
+    const buttons = Array.from(document.querySelectorAll('button, a'));
+
+    buttons.forEach(btn => {
+        // Skip if already processed or is our internal button
+        if (btn.hasAttribute('data-fixed-link') || btn.id === 'generate-signals' || btn.id === 'inc-mines' || btn.id === 'dec-mines') return;
+
+        const text = (btn.innerText || '').toLowerCase();
+
+        // Match "Recarregar" (Reload) or "Ativar" (Activate) -> Basic Plan
+        if (text.includes('recarregar') || text.includes('ativar')) {
+            console.log("Corrigindo botão de checkout:", btn);
+
+            // Replace the node to remove old event listeners (hard React override)
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+
+            newBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Redirecionando para:", CHECKOUT_BASIC);
+                window.location.href = CHECKOUT_BASIC;
+            });
+
+            newBtn.setAttribute('data-fixed-link', 'true');
+            newBtn.style.cursor = 'pointer';
+        }
+    });
+}
+
 
 function initMinesPanel() {
     console.log("Iniciando injeção do painel Mines...");
@@ -111,10 +147,10 @@ function initMinesPanel() {
 
     for (const div of allDivs) {
         if (div.innerText.toLowerCase().includes('em breve') && div.innerText.toLowerCase().includes('estratégia')) {
-           // Found a potential candidate. Let's look for the closest substantial container
-           targetContainer = div.closest('.bg-card, .rounded-lg') || div.parentElement;
-           console.log("Container alvo encontrado:", targetContainer);
-           break;
+            // Found a potential candidate. Let's look for the closest substantial container
+            targetContainer = div.closest('.bg-card, .rounded-lg') || div.parentElement;
+            console.log("Container alvo encontrado:", targetContainer);
+            break;
         }
     }
 
@@ -123,8 +159,8 @@ function initMinesPanel() {
         // Try to find the dashboard grid and inject into the second or third slot if emptyish
         const grid = document.querySelector('.grid');
         if (grid && grid.children.length > 1) {
-             // Heuristic: The Mines panel is usually one of the main cards
-             // We might replace a card that looks "empty"
+            // Heuristic: The Mines panel is usually one of the main cards
+            // We might replace a card that looks "empty"
         }
     }
 
@@ -154,10 +190,10 @@ function setupEventListeners() {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.strat-btn').forEach(b => b.classList.remove('active', 'bg-primary', 'text-primary-foreground'));
             document.querySelectorAll('.strat-btn').forEach(b => b.classList.add('bg-secondary', 'text-secondary-foreground'));
-            
+
             e.target.classList.remove('bg-secondary', 'text-secondary-foreground');
             e.target.classList.add('active', 'bg-primary', 'text-primary-foreground');
-            
+
             minesState.strategy = e.target.innerText;
         });
     });
@@ -183,7 +219,7 @@ function generateSignal() {
     const display = document.getElementById('signal-display');
     const btn = document.getElementById('generate-signals');
     const loading = document.getElementById('loading-overlay');
-    
+
     if (!display || !btn) return;
 
     display.classList.remove('hidden');
@@ -196,7 +232,7 @@ function generateSignal() {
 
     const grid = document.getElementById('mines-grid');
     // Draw empty grid
-    for(let i=0; i<25; i++) {
+    for (let i = 0; i < 25; i++) {
         const cell = document.createElement('div');
         cell.className = "mine-cell w-full h-full bg-secondary rounded-sm border border-white/5";
         grid.appendChild(cell);
@@ -210,10 +246,10 @@ function generateSignal() {
         // Simple random strategy for demo
         const stars = [];
         let numStars = 3; // Default show 3 stars/diamonds for prediction
-        
-        while(stars.length < numStars) {
+
+        while (stars.length < numStars) {
             const r = Math.floor(Math.random() * 25);
-            if(stars.indexOf(r) === -1) stars.push(r);
+            if (stars.indexOf(r) === -1) stars.push(r);
         }
 
         const cells = grid.children;
@@ -228,7 +264,7 @@ function generateSignal() {
 
         const hash = Math.random().toString(36).substring(7).toUpperCase();
         document.getElementById('signal-hash').innerText = `SINAL: ${hash} | ASSERTIVIDADE: ${(Math.random() * (98 - 85) + 85).toFixed(2)}%`;
-        
+
         btn.disabled = false;
         btn.innerHTML = `
             <span class="relative z-10 flex items-center gap-2">
@@ -241,16 +277,26 @@ function generateSignal() {
 
 // Observer to auto-inject when loaded
 const observer = new MutationObserver((mutations) => {
-    if (document.getElementById('mines-control-panel')) return; // Already injected
-    
-    // Check if we have the "em breve" text visible
-    if (document.body.innerText.includes('Em breve') || document.body.innerText.includes('em breve')) {
-        initMinesPanel();
+    // 1. Try to inject Mines panel
+    if (!document.getElementById('mines-control-panel')) {
+        // Check if we have the "em breve" text visible
+        if (document.body.innerText.includes('Em breve') || document.body.innerText.includes('em breve')) {
+            initMinesPanel();
+        }
     }
+
+    // 2. Continuous checkout link fix
+    fixCheckoutLinks();
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
 
 // Also try on load immediately
-window.addEventListener('load', () => setTimeout(initMinesPanel, 1000));
-window.addEventListener('popstate', () => setTimeout(initMinesPanel, 500)); // Handle Navigation
+window.addEventListener('load', () => {
+    setTimeout(initMinesPanel, 1000);
+    setTimeout(fixCheckoutLinks, 1000);
+});
+window.addEventListener('popstate', () => {
+    setTimeout(initMinesPanel, 500);
+    setTimeout(fixCheckoutLinks, 500);
+});

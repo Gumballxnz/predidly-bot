@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 // ⚠️ SUBSTITUA ESTES LINKS PELOS SEUS LINKS DO RATIXPAY
-const LINK_ATIVACAO_BASICA = 'https://www.ratixpay.site/checkout/SEU_PRODUTO_BASICO';
-const LINK_PRO = 'https://www.ratixpay.site/checkout/SEU_PRODUTO_PRO';
+const LINK_ATIVACAO_BASICA = 'https://www.ratixpay.site/checkout.html?produto=L45CA98W7';
+const LINK_PRO = 'https://www.ratixpay.site/checkout.html?produto=FEDMP47IV';
 
 // Links antigos
 const LINK_ANTIGO_BASICO = 'https://novatrip.infinityfreeapp.com/produto/predicfly-active/';
