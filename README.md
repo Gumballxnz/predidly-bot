@@ -17,7 +17,6 @@ Landing page de alta conversão para o Bot Aviador, com:
 - ✅ Depoimentos de clientes com fotos reais
 - ✅ Contadores dinâmicos (vagas, visualizações)
 - ✅ Notificações de prova social em tempo real
-- ✅ Meta Pixel integrado para rastreamento
 - ✅ SEO otimizado
 - ✅ **Proteção Anti-Clone completa**
 
@@ -80,16 +79,6 @@ window.location.href = 'https://pay.example.com/checkout';
 ```
 
 Substitua pela URL do seu checkout.
-
-### Alterar Pixel do Facebook
-
-No arquivo `index.html`, localize:
-
-```javascript
-fbq('init', '1457709218818526');
-```
-
-Substitua pelo seu Pixel ID.
 
 ## 🎬 Player de Vídeo (Estilo VTurb)
 
