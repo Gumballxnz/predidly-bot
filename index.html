@@ -26,6 +26,41 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/logo.jpg">
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2005862116860795');
+    fbq('track', 'PageView');
+
+    // Rastreamento Inteligente de Cliques (Para SPAs/Apps)
+    document.addEventListener('click', function (e) {
+      // Procura se o clique foi em um link ou botão que leva para RatixPay
+      const target = e.target.closest('a[href*="ratixpay"], button[onclick*="ratixpay"]');
+
+      if (target) {
+        console.log('💰 Click de Checkout Detectado (RatixPay)');
+        fbq('track', 'AddToCart', {
+          content_name: 'Licença Predidly Bot',
+          currency: 'MZN',
+          value: 100.00 // Valor médio ou base
+        });
+      }
+    }, true);
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2005862116860795&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de Predições">
   <meta name="twitter:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
