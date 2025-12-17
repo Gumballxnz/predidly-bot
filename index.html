@@ -31,7 +31,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -42,6 +42,49 @@
     fbq('init', '2005862116860795');
     fbq('track', 'PageView');
 
+    // ========================================
+    // FACEBOOK CONVERSIONS API (Server-Side)
+    // ========================================
+    const CAPI_ENDPOINT = '/api/facebook-capi';
+
+    // Obter cookies do Facebook para melhor matching
+    function getFacebookCookies() {
+      const cookies = document.cookie.split(';').reduce((acc, c) => {
+        const [key, value] = c.trim().split('=');
+        acc[key] = value;
+        return acc;
+      }, {});
+      return { fbc: cookies['_fbc'] || null, fbp: cookies['_fbp'] || null };
+    }
+
+    // Enviar evento para API de Conversão
+    async function sendCAPIEvent(eventName, customData = {}) {
+      try {
+        const fbCookies = getFacebookCookies();
+        const response = await fetch(CAPI_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event_name: eventName,
+            event_source_url: window.location.href,
+            user_data: {
+              fbc: fbCookies.fbc,
+              fbp: fbCookies.fbp,
+              client_user_agent: navigator.userAgent
+            },
+            custom_data: customData
+          })
+        });
+        const result = await response.json();
+        console.log(`✅ CAPI [${eventName}]:`, result);
+      } catch (error) {
+        console.log(`⚠️ CAPI [${eventName}] Error:`, error.message);
+      }
+    }
+
+    // Enviar PageView via CAPI também
+    sendCAPIEvent('PageView');
+
     // Rastreamento Inteligente de Cliques (Para SPAs/Apps)
     document.addEventListener('click', function (e) {
       // Procura se o clique foi em um link ou botão que leva para RatixPay
@@ -49,10 +92,24 @@
 
       if (target) {
         console.log('💰 Click de Checkout Detectado (RatixPay)');
+
+        // Detectar valor baseado no link
+        const href = target.getAttribute('href') || '';
+        const value = href.includes('FEDMP47IV') ? 269 : 100;
+        const productName = href.includes('FEDMP47IV') ? 'Predidly Bot PRO' : 'Predidly Bot Básico';
+
+        // Pixel (Browser)
         fbq('track', 'AddToCart', {
-          content_name: 'Licença Predidly Bot',
+          content_name: productName,
           currency: 'MZN',
-          value: 100.00 // Valor médio ou base
+          value: value
+        });
+
+        // CAPI (Server)
+        sendCAPIEvent('AddToCart', {
+          content_name: productName,
+          currency: 'MZN',
+          value: value
         });
       }
     }, true);
