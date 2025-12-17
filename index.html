@@ -87,16 +87,26 @@
 
     // Rastreamento Inteligente de Cliques (Para SPAs/Apps)
     document.addEventListener('click', function (e) {
-      // Procura se o clique foi em um link ou botão que leva para RatixPay
-      const target = e.target.closest('a[href*="ratixpay"], button[onclick*="ratixpay"]');
+      // Procura se o clique foi em um link que leva para RatixPay
+      const ratixPayLink = e.target.closest('a[href*="ratixpay"]');
 
-      if (target) {
-        console.log('💰 Click de Checkout Detectado (RatixPay)');
+      // Procura se o clique foi no botão "Continuar para Ativação" (o botão real de checkout)
+      const buttonText = e.target.textContent?.toLowerCase().trim() || '';
+      const isCheckoutButton = buttonText.includes('continuar para ativação') ||
+        buttonText.includes('continuar para ativacao') ||
+        buttonText.includes('ativar pro');
 
-        // Detectar valor baseado no link
-        const href = target.getAttribute('href') || '';
-        const value = href.includes('FEDMP47IV') ? 269 : 100;
-        const productName = href.includes('FEDMP47IV') ? 'Predidly Bot PRO' : 'Predidly Bot Básico';
+      // Verifica também o ID do botão de checkout
+      const isCheckoutById = e.target.closest('#checkout-btn, [id*="checkout"]');
+
+      if (ratixPayLink || isCheckoutButton || isCheckoutById) {
+        console.log('💰 Click de Checkout Detectado!', { ratixPayLink: !!ratixPayLink, isCheckoutButton, isCheckoutById: !!isCheckoutById });
+
+        // Detectar valor baseado no link ou contexto
+        const href = ratixPayLink?.getAttribute('href') || '';
+        const isPro = href.includes('FEDMP47IV') || buttonText.includes('pro');
+        const value = isPro ? 269 : 100;
+        const productName = isPro ? 'Predidly Bot PRO' : 'Predidly Bot Básico';
 
         // Pixel (Browser)
         fbq('track', 'AddToCart', {
