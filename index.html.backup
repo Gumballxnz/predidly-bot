@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes Aviator e Mines</title>
+  <title>Predidly Bot - Sistema Inteligente de Predições Aviator e Mines</title>
   <meta name="description"
-    content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto. Ative seu bot e receba as melhores jogadas em tempo real.">
+    content="Predições automáticas para Aviator e Mines com até 90% de acerto. Ative seu bot e receba as melhores jogadas em tempo real.">
   <meta name="author" content="Predidly Bot">
 
   <!-- Favicon -->
@@ -21,116 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <meta property="og:title" content="Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes">
-  <meta property="og:description" content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto">
+  <meta property="og:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta property="og:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/logo.jpg">
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2005862116860795');
-    fbq('track', 'PageView');
-
-    // ========================================
-    // FACEBOOK CONVERSIONS API (Server-Side)
-    // ========================================
-    const CAPI_ENDPOINT = '/api/facebook-capi';
-
-    // Obter cookies do Facebook para melhor matching
-    function getFacebookCookies() {
-      const cookies = document.cookie.split(';').reduce((acc, c) => {
-        const [key, value] = c.trim().split('=');
-        acc[key] = value;
-        return acc;
-      }, {});
-      return { fbc: cookies['_fbc'] || null, fbp: cookies['_fbp'] || null };
-    }
-
-    // Enviar evento para API de Conversão
-    async function sendCAPIEvent(eventName, customData = {}) {
-      try {
-        const fbCookies = getFacebookCookies();
-        const response = await fetch(CAPI_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            event_name: eventName,
-            event_source_url: window.location.href,
-            user_data: {
-              fbc: fbCookies.fbc,
-              fbp: fbCookies.fbp,
-              client_user_agent: navigator.userAgent
-            },
-            custom_data: customData
-          })
-        });
-        const result = await response.json();
-        console.log(`✅ CAPI [${eventName}]:`, result);
-      } catch (error) {
-        console.log(`⚠️ CAPI [${eventName}] Error:`, error.message);
-      }
-    }
-
-    // Enviar PageView via CAPI também
-    sendCAPIEvent('PageView');
-
-    // Rastreamento Inteligente de Cliques (Para SPAs/Apps)
-    document.addEventListener('click', function (e) {
-      // Procura se o clique foi em um link que leva para RatixPay
-      const ratixPayLink = e.target.closest('a[href*="ratixpay"]');
-
-      // Procura se o clique foi no botão "Continuar para Ativação" (o botão real de checkout)
-      const buttonText = e.target.textContent?.toLowerCase().trim() || '';
-      const isCheckoutButton = buttonText.includes('continuar para ativação') ||
-        buttonText.includes('continuar para ativacao') ||
-        buttonText.includes('ativar pro');
-
-      // Verifica também o ID do botão de checkout
-      const isCheckoutById = e.target.closest('#checkout-btn, [id*="checkout"]');
-
-      if (ratixPayLink || isCheckoutButton || isCheckoutById) {
-        console.log('💰 Click de Checkout Detectado!', { ratixPayLink: !!ratixPayLink, isCheckoutButton, isCheckoutById: !!isCheckoutById });
-
-        // Detectar valor baseado no link ou contexto
-        const href = ratixPayLink?.getAttribute('href') || '';
-        const isPro = href.includes('FEDMP47IV') || buttonText.includes('pro');
-        const value = isPro ? 269 : 100;
-        const productName = isPro ? 'Predidly Bot PRO' : 'Predidly Bot Básico';
-
-        // Pixel (Browser)
-        fbq('track', 'AddToCart', {
-          content_name: productName,
-          currency: 'MZN',
-          value: value
-        });
-
-        // CAPI (Server)
-        sendCAPIEvent('AddToCart', {
-          content_name: productName,
-          currency: 'MZN',
-          value: value
-        });
-      }
-    }, true);
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2005862116860795&ev=PageView&noscript=1" /></noscript>
-  <!-- End Meta Pixel Code -->
-
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes">
-  <meta name="twitter:description" content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto">
+  <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta name="twitter:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
   <meta name="twitter:image" content="images/logo.jpg">
 
   <!-- Robots meta -->
@@ -140,7 +38,7 @@
   <link rel="stylesheet" crossorigin="" href="css/index-CB3bEj15.css">
 
   <style>
-    /* ProteÃ§Ãµes Anti-CÃ³pia */
+    /* Proteções Anti-Cópia */
     body {
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -158,7 +56,7 @@
       pointer-events: none;
     }
 
-    /* Permitir seleÃ§Ã£o em inputs e textareas */
+    /* Permitir seleção em inputs e textareas */
     input,
     textarea,
     [contenteditable="true"] {
@@ -296,7 +194,7 @@
 
   <script>
     // ============================================
-    // PROTEÃ‡Ã•ES ANTI-CÃ“PIA E ANTI-INSPEÃ‡ÃƒO
+    // PROTEÇÕES ANTI-CÓPIA E ANTI-INSPEÇÃO
     // ============================================
 
     // Desabilitar clique direito
@@ -370,7 +268,7 @@
       return false;
     });
 
-    // Desabilitar seleÃ§Ã£o de texto com mouse
+    // Desabilitar seleção de texto com mouse
     document.addEventListener('selectstart', function (e) {
       if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
@@ -378,7 +276,7 @@
       }
     });
 
-    // Desabilitar cÃ³pia
+    // Desabilitar cópia
     document.addEventListener('copy', function (e) {
       if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
         e.preventDefault();
@@ -394,7 +292,7 @@
       }
     });
 
-    // Detectar DevTools aberto (mÃ©todo bÃ¡sico)
+    // Detectar DevTools aberto (método básico)
     (function () {
       const devtools = {
         isOpen: false,
@@ -435,12 +333,12 @@
     })();
 
     // Console warning
-    console.log('%câš ï¸ AVISO DE SEGURANÃ‡A', 'color: red; font-size: 30px; font-weight: bold;');
-    console.log('%cEste Ã© um recurso do navegador destinado a desenvolvedores.', 'font-size: 16px;');
-    console.log('%cNÃ£o cole nenhum cÃ³digo aqui. Isso pode comprometer sua conta.', 'font-size: 14px; color: orange;');
+    console.log('%c⚠️ AVISO DE SEGURANÇA', 'color: red; font-size: 30px; font-weight: bold;');
+    console.log('%cEste é um recurso do navegador destinado a desenvolvedores.', 'font-size: 16px;');
+    console.log('%cNão cole nenhum código aqui. Isso pode comprometer sua conta.', 'font-size: 14px; color: orange;');
 
     // ============================================
-    // ðŸ”§ MODO DESENVOLVIMENTO - ATIVAÃ‡ÃƒO AUTOMÃTICA
+    // 🔧 MODO DESENVOLVIMENTO - ATIVAÇÃO AUTOMÁTICA
     // ============================================
     // Ativa automaticamente quando rodando em localhost
     (function () {
@@ -449,7 +347,7 @@
         window.location.hostname.startsWith('192.168.');
 
       if (isLocalhost) {
-        // Verificar se jÃ¡ estÃ¡ ativado
+        // Verificar se já está ativado
         var isActivated = localStorage.getItem('pf_activated') === 'true';
 
         if (!isActivated) {
@@ -458,12 +356,12 @@
           localStorage.setItem('pf_balance', '1000'); // 1000 MT de saldo de teste
           localStorage.setItem('pf_activation_date', new Date().toISOString());
 
-          console.log('%cðŸ”“ MODO DEV ATIVADO', 'color: #22c55e; font-size: 20px; font-weight: bold;');
-          console.log('%câœ… Conta ativada automaticamente (localhost)', 'color: #22c55e; font-size: 14px;');
-          console.log('%cðŸ’° Saldo de teste: 1000 MT', 'color: #fbbf24; font-size: 14px;');
+          console.log('%c🔓 MODO DEV ATIVADO', 'color: #22c55e; font-size: 20px; font-weight: bold;');
+          console.log('%c✅ Conta ativada automaticamente (localhost)', 'color: #22c55e; font-size: 14px;');
+          console.log('%c💰 Saldo de teste: 1000 MT', 'color: #fbbf24; font-size: 14px;');
         } else {
-          console.log('%cðŸ”“ MODO DEV', 'color: #22c55e; font-size: 16px; font-weight: bold;');
-          console.log('%câœ… Conta jÃ¡ ativada | Saldo: ' + (localStorage.getItem('pf_balance') || '0') + ' MT', 'color: #22c55e; font-size: 12px;');
+          console.log('%c🔓 MODO DEV', 'color: #22c55e; font-size: 16px; font-weight: bold;');
+          console.log('%c✅ Conta já ativada | Saldo: ' + (localStorage.getItem('pf_balance') || '0') + ' MT', 'color: #22c55e; font-size: 12px;');
         }
       }
     })();
@@ -474,9 +372,9 @@
 <body>
   <!-- Loading Screen - Aparece instantaneamente -->
   <div id="loading-screen">
-    <div class="loader-logo">ðŸš€ Predidly Bot</div>
+    <div class="loader-logo">🚀 Predidly Bot</div>
     <div class="loader-spinner"></div>
-    <div class="loader-text">Carregando sistema de prediÃ§Ãµes...</div>
+    <div class="loader-text">Carregando sistema de predições...</div>
     <div class="loader-progress">
       <div class="loader-progress-bar"></div>
     </div>
@@ -492,7 +390,7 @@
         var loader = document.getElementById('loading-screen');
         if (loader) {
           loader.classList.add('hidden');
-          // Remover do DOM apÃ³s a animaÃ§Ã£o
+          // Remover do DOM após a animação
           setTimeout(function () {
             loader.remove();
           }, 500);
@@ -500,7 +398,7 @@
       }, 500);
     });
 
-    // Fallback: ocultar apÃ³s 10 segundos mesmo se algo falhar
+    // Fallback: ocultar após 10 segundos mesmo se algo falhar
     setTimeout(function () {
       var loader = document.getElementById('loading-screen');
       if (loader && !loader.classList.contains('hidden')) {
@@ -509,11 +407,6 @@
     }, 10000);
   </script>
   <script type="module" src="js/mines-v3.js"></script>
-
-<!-- Vercel Analytics -->
-<script>
-(function(){if(window.location.hostname.includes('vercel.app')||document.querySelector('script[src*="/_vercel/insights"]')){var s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';document.head.appendChild(s);var sp=document.createElement('script');sp.defer=true;sp.src='/_vercel/speed-insights/script.js';document.head.appendChild(sp);}})();
-</script>
 </body>
 
 </html>
