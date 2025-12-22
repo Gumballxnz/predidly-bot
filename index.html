@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes Aviator e Mines</title>
+  <title>Predidly Bot - Sistema Inteligente de Predições Aviator e Mines</title>
   <meta name="description"
-    content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto. Ative seu bot e receba as melhores jogadas em tempo real.">
+    content="Predições automáticas para Aviator e Mines com até 90% de acerto. Ative seu bot e receba as melhores jogadas em tempo real.">
   <meta name="author" content="Predidly Bot">
 
   <!-- Favicon -->
@@ -21,8 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <meta property="og:title" content="Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes">
-  <meta property="og:description" content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto">
+  <meta property="og:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta property="og:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/logo.jpg">
 
@@ -129,8 +129,8 @@
   <!-- End Meta Pixel Code -->
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de PrediÃ§Ãµes">
-  <meta name="twitter:description" content="PrediÃ§Ãµes automÃ¡ticas para Aviator e Mines com atÃ© 90% de acerto">
+  <meta name="twitter:title" content="Predidly Bot - Sistema Inteligente de Predições">
+  <meta name="twitter:description" content="Predições automáticas para Aviator e Mines com até 90% de acerto">
   <meta name="twitter:image" content="images/logo.jpg">
 
   <!-- Robots meta -->
@@ -139,42 +139,11 @@
   <script type="module" crossorigin="" src="js/index-Dowo4TYh.js"></script>
   <link rel="stylesheet" crossorigin="" href="css/index-CB3bEj15.css">
 
+
+
   <style>
-    /* ProteÃ§Ãµes Anti-CÃ³pia */
-    body {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-    }
-
-    img {
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
-      pointer-events: none;
-    }
-
-    /* Permitir seleÃ§Ã£o em inputs e textareas */
-    input,
-    textarea,
-    [contenteditable="true"] {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text;
-    }
-
-    /* Desabilitar highlight em mobile */
-    * {
-      -webkit-tap-highlight-color: transparent;
-    }
-
     /* ============================================ */
-    /* LOADING SCREEN - Aparece instantaneamente   */
+    /* LOADING SCREEN - Aparece instantaneamente */
     /* ============================================ */
     #loading-screen {
       position: fixed;
@@ -293,227 +262,60 @@
       }
     }
   </style>
-
-  <script>
-    // ============================================
-    // PROTEÃ‡Ã•ES ANTI-CÃ“PIA E ANTI-INSPEÃ‡ÃƒO
-    // ============================================
-
-    // Desabilitar clique direito
-    document.addEventListener('contextmenu', function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // Desabilitar atalhos de teclado comuns para desenvolvedor
-    document.addEventListener('keydown', function (e) {
-      // F12
-      if (e.key === 'F12' || e.keyCode === 123) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+Shift+I (DevTools)
-      if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+Shift+J (Console)
-      if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+Shift+C (Inspect Element)
-      if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+U (View Source)
-      if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+S (Save Page)
-      if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+P (Print)
-      if (e.ctrlKey && (e.key === 'P' || e.key === 'p' || e.keyCode === 80)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+A (Select All)
-      if (e.ctrlKey && (e.key === 'A' || e.key === 'a' || e.keyCode === 65)) {
-        e.preventDefault();
-        return false;
-      }
-
-      // Ctrl+C (Copy) - exceto em inputs
-      if (e.ctrlKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67) && !e.shiftKey) {
-        if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-          e.preventDefault();
-          return false;
-        }
-      }
-    });
-
-    // Desabilitar arrastar elementos
-    document.addEventListener('dragstart', function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // Desabilitar seleÃ§Ã£o de texto com mouse
-    document.addEventListener('selectstart', function (e) {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    // Desabilitar cÃ³pia
-    document.addEventListener('copy', function (e) {
-      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    // Desabilitar cortar
-    document.addEventListener('cut', function (e) {
-      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    // Detectar DevTools aberto (mÃ©todo bÃ¡sico)
-    (function () {
-      const devtools = {
-        isOpen: false,
-        orientation: undefined
-      };
-
-      const threshold = 160;
-
-      const emitEvent = (isOpen, orientation) => {
-        globalThis.dispatchEvent(new CustomEvent('devtoolschange', {
-          detail: {
-            isOpen,
-            orientation
-          }
-        }));
-      };
-
-      setInterval(() => {
-        const widthThreshold = globalThis.outerWidth - globalThis.innerWidth > threshold;
-        const heightThreshold = globalThis.outerHeight - globalThis.innerHeight > threshold;
-        const orientation = widthThreshold ? 'vertical' : 'horizontal';
-
-        if (!(heightThreshold && widthThreshold) &&
-          ((globalThis.Firebug && globalThis.Firebug.chrome && globalThis.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
-          if (!devtools.isOpen || devtools.orientation !== orientation) {
-            emitEvent(true, orientation);
-          }
-          devtools.isOpen = true;
-          devtools.orientation = orientation;
-        } else {
-          if (devtools.isOpen) {
-            emitEvent(false, undefined);
-          }
-          devtools.isOpen = false;
-          devtools.orientation = undefined;
-        }
-      }, 500);
-    })();
-
-    // Console warning
-    console.log('%câš ï¸ AVISO DE SEGURANÃ‡A', 'color: red; font-size: 30px; font-weight: bold;');
-    console.log('%cEste Ã© um recurso do navegador destinado a desenvolvedores.', 'font-size: 16px;');
-    console.log('%cNÃ£o cole nenhum cÃ³digo aqui. Isso pode comprometer sua conta.', 'font-size: 14px; color: orange;');
-
-    // ============================================
-    // ðŸ”§ MODO DESENVOLVIMENTO - ATIVAÃ‡ÃƒO AUTOMÃTICA
-    // ============================================
-    // Ativa automaticamente quando rodando em localhost
-    (function () {
-      var isLocalhost = window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1' ||
-        window.location.hostname.startsWith('192.168.');
-
-      if (isLocalhost) {
-        // Verificar se jÃ¡ estÃ¡ ativado
-        var isActivated = localStorage.getItem('pf_activated') === 'true';
-
-        if (!isActivated) {
-          // Ativar conta automaticamente
-          localStorage.setItem('pf_activated', 'true');
-          localStorage.setItem('pf_balance', '1000'); // 1000 MT de saldo de teste
-          localStorage.setItem('pf_activation_date', new Date().toISOString());
-
-          console.log('%cðŸ”“ MODO DEV ATIVADO', 'color: #22c55e; font-size: 20px; font-weight: bold;');
-          console.log('%câœ… Conta ativada automaticamente (localhost)', 'color: #22c55e; font-size: 14px;');
-          console.log('%cðŸ’° Saldo de teste: 1000 MT', 'color: #fbbf24; font-size: 14px;');
-        } else {
-          console.log('%cðŸ”“ MODO DEV', 'color: #22c55e; font-size: 16px; font-weight: bold;');
-          console.log('%câœ… Conta jÃ¡ ativada | Saldo: ' + (localStorage.getItem('pf_balance') || '0') + ' MT', 'color: #22c55e; font-size: 12px;');
-        }
-      }
-    })();
-  </script>
-
 </head>
 
 <body>
-  <!-- Loading Screen - Aparece instantaneamente -->
-  <div id="loading-screen">
-    <div class="loader-logo">ðŸš€ Predidly Bot</div>
-    <div class="loader-spinner"></div>
-    <div class="loader-text">Carregando sistema de prediÃ§Ãµes...</div>
-    <div class="loader-progress">
-      <div class="loader-progress-bar"></div>
+  < !-- Loading Screen - Aparece instantaneamente -->
+    <div id="loading-screen">
+      <div class="loader-logo">🚀 Predidly Bot</div>
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Carregando sistema de predições...</div>
+      <div class="loader-progress">
+        <div class="loader-progress-bar"></div>
+      </div>
     </div>
-  </div>
+    < !-- App React -->
+      <div id="root"></div>
+      <script> // Ocultar loading quando o app carregar
 
-  <!-- App React -->
-  <div id="root"></div>
-
-  <script>
-    // Ocultar loading quando o app carregar
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        var loader = document.getElementById('loading-screen');
-        if (loader) {
-          loader.classList.add('hidden');
-          // Remover do DOM apÃ³s a animaÃ§Ã£o
+        window.addEventListener('load', function () {
           setTimeout(function () {
-            loader.remove();
-          }, 500);
+            var loader = document.getElementById('loading-screen');
+
+            if (loader) {
+              loader.classList.add('hidden');
+
+              // Remover do DOM após a animação
+              setTimeout(function () {
+                loader.remove();
+              }
+
+                , 500);
+            }
+          }
+
+            , 500);
+        });
+
+        // Fallback: ocultar após 10 segundos mesmo se algo falhar
+        setTimeout(function () {
+          var loader = document.getElementById('loading-screen');
+
+          if (loader && !loader.classList.contains('hidden')) {
+            loader.classList.add('hidden');
+          }
         }
-      }, 500);
-    });
 
-    // Fallback: ocultar apÃ³s 10 segundos mesmo se algo falhar
-    setTimeout(function () {
-      var loader = document.getElementById('loading-screen');
-      if (loader && !loader.classList.contains('hidden')) {
-        loader.classList.add('hidden');
-      }
-    }, 10000);
-  </script>
-  <script type="module" src="js/mines-v3.js"></script>
+          , 10000);
 
-<!-- Vercel Analytics -->
-<script>
-(function(){if(window.location.hostname.includes('vercel.app')||document.querySelector('script[src*="/_vercel/insights"]')){var s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';document.head.appendChild(s);var sp=document.createElement('script');sp.defer=true;sp.src='/_vercel/speed-insights/script.js';document.head.appendChild(sp);}})();
-</script>
+      </script>
+      < !-- Vercel Analytics -->
+        <script>(function () {
+            if (window.location.hostname.includes('vercel.app') || document.querySelector('script[src*="/_vercel/insights"]')) {
+              var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s); var sp = document.createElement('script'); sp.defer = true; sp.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(sp);
+            }
+          })();
+        </script>
 </body>
 
 </html>
