@@ -265,57 +265,57 @@
 </head>
 
 <body>
-  < !-- Loading Screen - Aparece instantaneamente -->
-    <div id="loading-screen">
-      <div class="loader-logo">🚀 Predidly Bot</div>
-      <div class="loader-spinner"></div>
-      <div class="loader-text">Carregando sistema de predições...</div>
-      <div class="loader-progress">
-        <div class="loader-progress-bar"></div>
-      </div>
+  <!-- Loading Screen - Aparece instantaneamente -->
+  <div id="loading-screen">
+    <div class="loader-logo">🚀 Predidly Bot</div>
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Carregando sistema de predições...</div>
+    <div class="loader-progress">
+      <div class="loader-progress-bar"></div>
     </div>
-    < !-- App React -->
-      <div id="root"></div>
-      <script> // Ocultar loading quando o app carregar
+  </div>
+  <!-- App React -->
+  <div id="root"></div>
+  <script> // Ocultar loading quando o app carregar
 
-        window.addEventListener('load', function () {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var loader = document.getElementById('loading-screen');
+
+        if (loader) {
+          loader.classList.add('hidden');
+
+          // Remover do DOM após a animação
           setTimeout(function () {
-            var loader = document.getElementById('loading-screen');
-
-            if (loader) {
-              loader.classList.add('hidden');
-
-              // Remover do DOM após a animação
-              setTimeout(function () {
-                loader.remove();
-              }
-
-                , 500);
-            }
+            loader.remove();
           }
 
             , 500);
-        });
-
-        // Fallback: ocultar após 10 segundos mesmo se algo falhar
-        setTimeout(function () {
-          var loader = document.getElementById('loading-screen');
-
-          if (loader && !loader.classList.contains('hidden')) {
-            loader.classList.add('hidden');
-          }
         }
+      }
 
-          , 10000);
+        , 500);
+    });
 
-      </script>
-      < !-- Vercel Analytics -->
-        <script>(function () {
-            if (window.location.hostname.includes('vercel.app') || document.querySelector('script[src*="/_vercel/insights"]')) {
-              var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s); var sp = document.createElement('script'); sp.defer = true; sp.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(sp);
-            }
-          })();
-        </script>
+    // Fallback: ocultar após 10 segundos mesmo se algo falhar
+    setTimeout(function () {
+      var loader = document.getElementById('loading-screen');
+
+      if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+      }
+    }
+
+      , 10000);
+
+  </script>
+  < !-- Vercel Analytics -->
+    <script>(function () {
+        if (window.location.hostname.includes('vercel.app') || document.querySelector('script[src*="/_vercel/insights"]')) {
+          var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s); var sp = document.createElement('script'); sp.defer = true; sp.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(sp);
+        }
+      })();
+    </script>
 </body>
 
 </html>
